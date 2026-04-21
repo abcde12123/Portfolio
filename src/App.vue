@@ -6,11 +6,11 @@ import { projects } from './types'
 
 <template>
   <div class="min-h-screen">
-    <!-- Navbar -->
+    <!-- 导航栏 -->
     <nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
       <div class="container mx-auto px-6 h-20 flex items-center justify-between">
         <div class="text-xl font-black tracking-tighter text-white">
-          VFX<span class="text-blue-500">PORTFOLIO</span>
+          VFX<span class="text-blue-500">作品集</span>
         </div>
         <div class="hidden md:flex items-center gap-8">
           <a href="#" class="text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors">首页</a>
@@ -21,10 +21,10 @@ import { projects } from './types'
       </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero 部分 -->
     <HeroSection />
 
-    <!-- Projects Section -->
+    <!-- 项目展示部分 -->
     <section id="projects" class="py-24 bg-slate-950">
       <div class="container mx-auto px-6">
         <div class="mb-16">
@@ -42,7 +42,7 @@ import { projects } from './types'
       </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- 技能部分 -->
     <section id="skills" class="py-24 bg-slate-900/50">
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row gap-16 items-center">
@@ -54,13 +54,18 @@ import { projects } from './types'
             </p>
             
             <div class="space-y-6">
-              <div v-for="(skill, index) in ['Unreal Engine 5 / Niagara', 'HLSL / Shader Graph', 'Blueprints Logic', 'Substance Designer / Painter']" :key="index">
+              <div v-for="(skill, index) in [
+                { name: 'Unreal Engine 5 / Niagara', level: '95%' },
+                { name: 'HLSL / Shader Graph', level: '90%' },
+                { name: 'Blueprints 逻辑控制', level: '85%' },
+                { name: 'Substance Designer / Painter', level: '80%' }
+              ]" :key="index">
                 <div class="flex justify-between mb-2">
-                  <span class="text-white font-bold">{{ skill }}</span>
-                  <span class="text-blue-400">95%</span>
+                  <span class="text-white font-bold">{{ skill.name }}</span>
+                  <span class="text-blue-400">{{ skill.level }}</span>
                 </div>
                 <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <div class="h-full bg-blue-600 rounded-full" :style="{ width: '95%' }"></div>
+                  <div class="h-full bg-blue-600 rounded-full" :style="{ width: skill.level }"></div>
                 </div>
               </div>
             </div>
@@ -68,15 +73,15 @@ import { projects } from './types'
           
           <div class="flex-1 grid grid-cols-2 gap-4">
             <div v-for="i in 4" :key="i" class="aspect-square bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700">
-               <!-- Placeholder for tech logos -->
-               <div class="text-slate-500 font-bold uppercase tracking-widest text-xs">Logo {{ i }}</div>
+               <!-- 软件图标占位 -->
+               <div class="text-slate-500 font-bold uppercase tracking-widest text-xs">软件图标 {{ i }}</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 页脚 -->
     <footer id="contact" class="py-20 border-t border-slate-800">
       <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-5xl font-black text-white mb-8">准备好开启下一个项目了吗？</h2>
@@ -84,9 +89,9 @@ import { projects } from './types'
         <div class="flex justify-center gap-6">
           <a href="#" class="text-slate-400 hover:text-white transition-colors">ArtStation</a>
           <a href="#" class="text-slate-400 hover:text-white transition-colors">LinkedIn</a>
-          <a href="#" class="text-slate-400 hover:text-white transition-colors">Email</a>
+          <a href="#" class="text-slate-400 hover:text-white transition-colors">电子邮件</a>
         </div>
-        <p class="mt-16 text-slate-600 text-sm">© 2026 VFX Portfolio. Built with Vue & Tailwind CSS.</p>
+        <p class="mt-16 text-slate-600 text-sm">© 2026 VFX 作品集. 使用 Vue & Tailwind CSS 构建.</p>
       </div>
     </footer>
   </div>
