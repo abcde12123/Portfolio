@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vfx-blue: oklch(0.623 0.214 259.815);
+  --color-vfx-indigo: oklch(0.511 0.262 276.966);
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 antialiased selection:bg-blue-500/30;
+  }
+}
+
+@layer components {
+  .vfx-card {
+    @apply relative overflow-hidden rounded-xl bg-slate-900 border border-slate-800 transition-all duration-300 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)];
+  }
+  
+  .vfx-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
