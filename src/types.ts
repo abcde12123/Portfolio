@@ -6,6 +6,7 @@ export interface Project {
   thumbnail: string;
   tags: string[];
   link?: string;
+  isVFX: boolean;
 }
 
 export const projects: Project[] = [
@@ -16,7 +17,8 @@ export const projects: Project[] = [
     description: "在模拟《植物大战僵尸》的基础上，实现了地图生成、背包系统、编辑器、商店、装备、整装效果等功能。包含完整的 UI 逻辑和游戏流程控制，以及 BUFF 系统。",
     thumbnail: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop",
     tags: ["UE5", "蓝图系统", "UI 框架", "存档系统", "BUFF 系统"],
-    link: "https://www.bilibili.com/video/BV1GSkB8Eepj/"
+    link: "https://www.bilibili.com/video/BV1GSkB8Eepj/",
+    isVFX: false
   },
   {
     id: 2,
@@ -25,16 +27,18 @@ export const projects: Project[] = [
     description: "实现了基础的视角锁定、动画通知驱动的位移、攻击连招、重击、精准判定、摄像机抖动及受击反馈。项目利用 C++ 拓展原生控制器，遵循面向对象编程及常用设计模式。",
     thumbnail: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1000&auto=format&fit=crop",
     tags: ["UE C++", "动作系统", "设计模式", "Gameplay"],
-    link: "https://github.com/abcde12123/Combat-System"
+    link: "https://github.com/abcde12123/Combat-System",
+    isVFX: false
   },
   {
     id: 3,
-    title: "UE 虚拟电影场景制作",
+    title: "UE 虚拟电影场景制作 (环境特效)",
     category: "环境特效 / 渲染",
     description: "着重实现真实的水体模拟、PCG 植被生成、材质的修改和复用，以及 UE 与 3ds Max 的模型联动。",
     thumbnail: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop",
     tags: ["水体模拟", "PCG", "材质编辑", "3ds Max"],
-    link: "https://github.com/abcde12123/Integrated-Landscape-Design"
+    link: "https://github.com/abcde12123/Integrated-Landscape-Design",
+    isVFX: true
   },
   {
     id: 4,
@@ -43,6 +47,17 @@ export const projects: Project[] = [
     description: "作为主程序负责 3C 设计、逻辑构建及高弹判定系统。在 7 天内完成完整游戏 Demo，获得最佳评审奖第二名。",
     thumbnail: "https://images.unsplash.com/photo-1544333346-604274984405?q=80&w=1000&auto=format&fit=crop",
     tags: ["主程序", "3C 设计", "碰撞判定"],
-    link: "https://www.bilibili.com/video/BV1JJxSBPBrp/"
+    link: "https://www.bilibili.com/video/BV1JJxSBPBrp/",
+    isVFX: false
+  },
+  {
+    id: 5,
+    title: "基于 Niagara 的火之呼吸特效演示",
+    category: "UE VFX",
+    description: "利用 Niagara 系统制作的高级火之呼吸特效，结合动画蓝图与通知触发，实现流畅的打击感视觉效果。",
+    thumbnail: "https://images.unsplash.com/photo-1550684847-75bdda21cc95?q=80&w=1000&auto=format&fit=crop",
+    tags: ["Niagara", "UE5", "材质系统", "火之呼吸"],
+    link: "#",
+    isVFX: true
   }
 ];
