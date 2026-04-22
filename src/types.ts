@@ -86,9 +86,9 @@ export const projects: Project[] = [
     title: "C++ 开发的第三人称动作游戏 Demo",
     category: "C++ / Gameplay",
     description: "实现了基础的视角锁定、动画通知驱动的位移、攻击连招、重击、精准判定、摄像机抖动及受击反馈。项目利用 C++ 拓展原生控制器，遵循面向对象编程及常用设计模式。",
-    thumbnail: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1000&auto=format&fit=crop",
+    thumbnail: "/images/Combat1.webp",
     tags: ["UE C++", "动作系统", "设计模式", "Gameplay"],
-    link: "https://github.com/abcde12123/Combat-System",
+    link: "#",
     isVFX: false
   }
 ];
