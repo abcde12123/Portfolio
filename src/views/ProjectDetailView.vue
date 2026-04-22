@@ -310,8 +310,58 @@ const bilibiliBvid = computed(() => {
                       </div>
                     </template>
 
-                    <!-- 默认展示内容：当项目没有特定详情模板时显示 -->
-                    <div v-if="![2, 4, 7].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <!-- PVZ2D 项目特有的内容 -->
+                    <template v-if="project.id === 1">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            UE5 PvZ 2D Remake
+                          </h3>
+                          <p class="text-sm leading-relaxed mb-8">基于 Unreal Engine 5 开发的 PVZ 创意魔改项目。在保留经典植物大战僵尸的要素上，引入了无限地图生成、RPG 商店、瞄准射击与装备系统。</p>
+                          
+                          <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                            核心技术点
+                          </h4>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">1. 2D 渲染与动画</strong>
+                              <p class="text-sm leading-relaxed"><span class="text-slate-400 font-bold">动画状态机：</span>采用基础状态机管理实体行为，定义了“待机、移动、攻击、死亡”等核心状态。通过简单的状态切换条件，确保植物与僵尸的行为逻辑清晰、互不干扰。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">2. 商店与角色装备系统</strong>
+                              <div class="space-y-2">
+                                <p class="text-sm leading-relaxed"><span class="text-slate-400 font-bold">交易体系：</span>构建了完整的货币消耗与商品购买流程，UI 与背包数据实时同步。</p>
+                                <p class="text-sm leading-relaxed"><span class="text-slate-400 font-bold">动态装配：</span>支持将购买的武器或道具实时装备至主角，实现攻击模式与属性数值的即时切换。</p>
+                              </div>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">3. 无限关卡生成</strong>
+                              <p class="text-sm leading-relaxed"><span class="text-slate-400 font-bold">程序化布局：</span>实现了无限地图生成功能，随着玩家推进自动扩展场景。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">4. 动态难度与判定优化</strong>
+                              <p class="text-sm leading-relaxed"><span class="text-slate-400 font-bold">阶梯难度递增：</span>随着生存时间增加自动调整僵尸的生成频率、血量及种类。</p>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                        <!-- GitHub 引导 -->
+                        <div class="flex items-center gap-4 p-6 bg-slate-900/50 border border-white/5 rounded-xl">
+                          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/10 rounded-lg">
+                            <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+                          </div>
+                          <div>
+                            <h4 class="text-white font-bold">项目开源仓库</h4>
+                            <p class="text-sm text-slate-400">PVZ2D 已在 GitHub 开源，包含完整的 UE5 蓝图逻辑。</p>
+                          </div>
+                          <a href="https://github.com/abcde12123/pvz2D" target="_blank" class="ml-auto px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all">访问 GitHub</a>
+                        </div>
+                      </div>
+                    </template>
+
+                    <!-- 默认展示内容 -->
+                    <div v-if="![1, 2, 4, 7].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
@@ -342,11 +392,11 @@ const bilibiliBvid = computed(() => {
                 <div class="space-y-4">
                   <h3 class="text-blue-500 font-black uppercase tracking-[0.2em] text-[10px]">Responsibility / 职责</h3>
                   <div class="text-white font-bold text-sm">
-                    <!-- Neowise (id: 4) 和 C++ 项目 (id: 2) 的职责 -->
-                    <template v-if="project.id === 4 || project.id === 2">
+                    <!-- Neowise (id: 4), C++ 项目 (id: 2) 和 PVZ2D (id: 1) 的职责 -->
+                    <template v-if="[1, 2, 4].includes(project.id)">
                       <div class="flex items-center gap-2 mb-2">
                         <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
-                        主程序 (Lead Programmer)
+                        主程序
                       </div>
                       <div class="flex items-center gap-2 mb-2">
                         <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
@@ -355,6 +405,10 @@ const bilibiliBvid = computed(() => {
                       <div v-if="project.id === 2" class="flex items-center gap-2">
                         <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
                         系统架构设计
+                      </div>
+                      <div v-else-if="project.id === 1" class="flex items-center gap-2">
+                        <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
+                        全系统逻辑实现
                       </div>
                       <div v-else class="flex items-center gap-2">
                         <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
