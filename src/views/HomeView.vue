@@ -12,6 +12,25 @@ const gamingExperience = [
 
 // 首页只显示前两个项目，且优先显示特效类
 const featuredProjects = [...projects].sort((a, b) => (b.isVFX ? 1 : 0) - (a.isVFX ? 1 : 0)).slice(0, 2);
+
+const vfxSkills = [
+  { name: '虚幻引擎', color: 'bg-slate-800 text-white border-slate-700', icon: 'UE' },
+  { name: 'Unity', color: 'bg-slate-800 text-white border-slate-700', icon: 'Unity' },
+  { name: 'C++', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'C++' },
+  { name: 'MAYA', color: 'bg-slate-800 text-white border-slate-700', icon: 'MY' },
+  { name: 'Substance Painter', color: 'bg-red-900/30 text-red-400 border-red-500/30', icon: 'PT' },
+  { name: 'AE平面设计与特效制作', color: 'bg-purple-900/30 text-purple-400 border-purple-500/30', icon: 'AE' }
+];
+
+const extendedSkills = [
+  { name: 'PR以及剪映剪辑', color: 'bg-purple-900/30 text-purple-400 border-purple-500/30', icon: 'PR' },
+  { name: '达芬奇及LightRoom调色', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'DV' },
+  { name: 'PhotoShop', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'PS' },
+  { name: 'AN', color: 'bg-red-900/30 text-red-400 border-red-500/30', icon: 'AN' },
+  { name: 'PPT', color: 'bg-orange-900/30 text-orange-400 border-orange-500/30', icon: 'PPT' },
+  { name: 'Word', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'WD' },
+  { name: 'Excle', color: 'bg-green-900/30 text-green-400 border-green-500/30', icon: 'XL' }
+];
 </script>
 
 <template>
@@ -70,13 +89,70 @@ const featuredProjects = [...projects].sort((a, b) => (b.isVFX ? 1 : 0) - (a.isV
       </div>
     </section>
 
-    <!-- 技能概览 -->
-    <section id="skills" class="py-24 bg-slate-900/50">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">核心 <span class="text-blue-500">技能</span></h2>
-        <p class="text-slate-400 max-w-2xl mx-auto mb-12">
-          深耕 UE 引擎生态，专注于实时特效与程序的深度融合。涵盖 Niagara 特效、C++ Gameplay 以及 材质渲染管线。
+    <!-- 技能概览 (改为滚动展示) -->
+    <section id="skills" class="py-24 bg-slate-900/50 overflow-hidden">
+      <div class="container mx-auto px-6 text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">技能 <span class="text-blue-500">矩阵</span></h2>
+        <p class="text-slate-400 max-w-3xl mx-auto mb-12">
+          熟悉 <span class="text-blue-400">UE5 Niagara</span> 特效系统，以及 <span class="text-blue-400">Unity</span> 与 <span class="text-blue-400">C++</span> 编程。
+          在数字媒体创作领域，拥有从 <span class="text-blue-400">PR/AE/剪映</span> 影视剪辑、<span class="text-blue-400">达芬奇/LR</span> 调色到 <span class="text-blue-400">PS/AN/PT</span> 美术设计及 <span class="text-blue-400">Office</span> 全家桶的完整工作流。
         </p>
+      </div>
+
+      <!-- 无限滚动区域 -->
+      <div class="relative flex flex-col gap-6 overflow-x-hidden py-10">
+        <!-- 第一行：VFX 相关 (较大) -->
+        <div class="flex whitespace-nowrap">
+          <div class="flex animate-marquee">
+            <div v-for="skill in vfxSkills" :key="skill.name" 
+                 class="mx-4 flex items-center gap-5 px-8 py-5 bg-slate-800/40 backdrop-blur-sm border rounded-2xl transition-all hover:bg-white/10 hover:border-white/30"
+                 :class="skill.color">
+              <div class="w-12 h-12 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-sm shadow-inner">
+                {{ skill.icon }}
+              </div>
+              <span class="text-xl font-black tracking-tight">{{ skill.name }}</span>
+            </div>
+          </div>
+          <!-- 复制一份实现无缝滚动 -->
+          <div class="flex animate-marquee" aria-hidden="true">
+            <div v-for="skill in vfxSkills" :key="skill.name + '-clone'" 
+                 class="mx-4 flex items-center gap-5 px-8 py-5 bg-slate-800/40 backdrop-blur-sm border rounded-2xl transition-all hover:bg-white/10 hover:border-white/30"
+                 :class="skill.color">
+              <div class="w-12 h-12 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-sm shadow-inner">
+                {{ skill.icon }}
+              </div>
+              <span class="text-xl font-black tracking-tight">{{ skill.name }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 第二行：拓展技能 (稍小) -->
+        <div class="flex whitespace-nowrap">
+          <div class="flex animate-marquee-reverse">
+            <div v-for="skill in extendedSkills" :key="skill.name" 
+                 class="mx-3 flex items-center gap-3 px-6 py-3 bg-slate-800/30 backdrop-blur-sm border rounded-xl transition-all hover:bg-white/10 hover:border-white/20"
+                 :class="skill.color">
+              <div class="w-8 h-8 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-[10px] shadow-inner">
+                {{ skill.icon }}
+              </div>
+              <span class="text-base font-bold tracking-tight">{{ skill.name }}</span>
+            </div>
+          </div>
+          <!-- 复制一份实现无缝滚动 -->
+          <div class="flex animate-marquee-reverse" aria-hidden="true">
+            <div v-for="skill in extendedSkills" :key="skill.name + '-clone'" 
+                 class="mx-3 flex items-center gap-3 px-6 py-3 bg-slate-800/30 backdrop-blur-sm border rounded-xl transition-all hover:bg-white/10 hover:border-white/20"
+                 :class="skill.color">
+              <div class="w-8 h-8 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-[10px] shadow-inner">
+                {{ skill.icon }}
+              </div>
+              <span class="text-base font-bold tracking-tight">{{ skill.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
         <router-link to="/skills" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-800 hover:bg-blue-600 text-white font-bold rounded-lg transition-all border border-slate-700 hover:border-blue-500 group">
           查看详细技能树
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -108,3 +184,25 @@ const featuredProjects = [...projects].sort((a, b) => (b.isVFX ? 1 : 0) - (a.isV
     </section>
   </div>
 </template>
+
+<style scoped>
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 35s linear infinite;
+}
+
+/* 移除鼠标悬停停止动画的逻辑 */
+</style>
