@@ -118,8 +118,6 @@ const bilibiliBvid = computed(() => {
                         <source :src="project.link" type="video/webm">
                         您的浏览器不支持 video 标签。
                       </video>
-                      <!-- 装饰性叠加层 -->
-                      <div v-if="!showControls" class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none transition-opacity duration-300"></div>
                     </div>
                   </div>
 
@@ -141,8 +139,6 @@ const bilibiliBvid = computed(() => {
                         <source :src="project.link" type="video/mp4">
                         您的浏览器不支持 video 标签。
                       </video>
-                      <!-- 装饰性叠加层 -->
-                      <div v-if="!showControls" class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none transition-opacity duration-300"></div>
                     </div>
                   </div>
 
@@ -164,8 +160,6 @@ const bilibiliBvid = computed(() => {
                         <source src="/videos/LM_Rending.webm" type="video/webm">
                         您的浏览器不支持 video 标签。
                       </video>
-                      <!-- 装饰性叠加层 -->
-                      <div v-if="!showControls" class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none transition-opacity duration-300"></div>
                     </div>
                   </div>
 
@@ -182,13 +176,13 @@ const bilibiliBvid = computed(() => {
                           <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_MAYA.webp')">
                             <img src="/images/LM_MAYA.webp" alt="Maya Modeling" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
-                          <p class="text-base text-slate-400 text-center italic font-medium">Maya 高低模建模阶段 / High & Low Poly Modeling</p>
+                          <p class="text-base text-slate-400 text-center italic font-medium">Maya 高低模建模阶段</p>
                         </div>
                         <div class="space-y-4">
                           <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_Material.webp')">
                             <img src="/images/LM_Material.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
-                          <p class="text-base text-slate-400 text-center italic font-medium">Substance Painter 材质全流程制作 / PBR Texturing Workflow</p>
+                          <p class="text-base text-slate-400 text-center italic font-medium">Substance Painter 材质制作</p>
                         </div>
                       </div>
                     </template>
@@ -220,7 +214,7 @@ const bilibiliBvid = computed(() => {
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R4.webp')">
                               <img src="/images/R4.webp" alt="Virtual Scene Preview 4" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
-                            <p class="text-sm text-slate-400 text-center italic">UE 与 3ds Max 模型联动</p>
+                            <p class="text-sm text-slate-400 text-center italic">PCG 植被生成与修改</p>
                           </div>
                         </div>
                       </div>
@@ -267,7 +261,7 @@ const bilibiliBvid = computed(() => {
                         <div class="bg-indigo-600/5 border border-indigo-500/10 rounded-2xl p-8 md:p-10">
                           <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <span class="w-1 h-6 bg-indigo-500 rounded-full"></span>
-                            核心玩法 / Core Gameplay
+                            核心玩法
                           </h3>
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="space-y-4">
@@ -300,7 +294,7 @@ const bilibiliBvid = computed(() => {
                         <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
                           <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
-                            核心技术点 / Technical Highlights
+                            核心技术点
                           </h3>
                           <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <li class="space-y-2">
@@ -308,7 +302,7 @@ const bilibiliBvid = computed(() => {
                               <p class="text-sm leading-relaxed">实现了方块网格逻辑与角色物理碰撞的实时同步，确保“逻辑下落”转变为“静态平台”时反馈无缝衔接。</p>
                             </li>
                             <li class="space-y-2">
-                              <strong class="text-blue-400 block">增益系统 (Buff System)</strong>
+                              <strong class="text-blue-400 block">增益系统</strong>
                               <p class="text-sm leading-relaxed">包含护盾、加速、二段跳等多种 Buff 系统，为极端环境下的生存提供策略选择。</p>
                             </li>
                             <li class="space-y-2">
@@ -376,7 +370,7 @@ const bilibiliBvid = computed(() => {
                         <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
                           <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
-                            核心技术点 / Technical Highlights
+                            核心技术点
                           </h3>
                           <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <li class="space-y-2">
@@ -393,7 +387,7 @@ const bilibiliBvid = computed(() => {
                             </li>
                             <li class="space-y-2">
                               <strong class="text-blue-400 block">动作衔接</strong>
-                              <p class="text-sm leading-relaxed">包含轻重攻击连招（Combo）、翻滚闪避（Dodge）及受击硬直（Hit Stun）。</p>
+                              <p class="text-sm leading-relaxed">包含轻重攻击连招（Combo）、翻滚闪避（Dodge）及受击硬直。</p>
                             </li>
                             <li class="space-y-2">
                               <strong class="text-blue-400 block">组件化设计</strong>
@@ -502,7 +496,7 @@ const bilibiliBvid = computed(() => {
                           <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <li class="space-y-2">
                               <strong class="text-blue-400 block">冰晶材质</strong>
-                              <p class="text-sm leading-relaxed">实现了基于深度的冻结效果与冰晶折射材质。</p>
+                              <p class="text-sm leading-relaxed">实现了基于菲涅尔反射的冻结效果与冰晶折射材质。</p>
                             </li>
                             <li class="space-y-2">
                               <strong class="text-blue-400 block">粒子交互</strong>
@@ -528,15 +522,11 @@ const bilibiliBvid = computed(() => {
                             </li>
                             <li class="space-y-2">
                               <strong class="text-blue-400 block">Niagara 粒子系统</strong>
-                              <p class="text-sm leading-relaxed">实现了围绕武器旋转的灰尘、火花以及祭坛底部的魔法阵光效，增强场景的生命力。</p>
+                              <p class="text-sm leading-relaxed">实现了围绕武器旋转的火花以及祭坛底部的魔法阵光效，增强场景的生命力。</p>
                             </li>
                             <li class="space-y-2">
                               <strong class="text-blue-400 block">自定义材质与后处理</strong>
-                              <p class="text-sm leading-relaxed">为狼末武器定制了带有流光效果的材质，并通过后处理（Post-Processing）进行色调映射与 Bloom 增强。</p>
-                            </li>
-                            <li class="space-y-2">
-                              <strong class="text-blue-400 block">场景布局与渲染</strong>
-                              <p class="text-sm leading-relaxed">通过 3ds Max 与 UE 的联动，精确控制祭坛台阶与周边的视觉构图，实现电影级的渲染输出。</p>
+                              <p class="text-sm leading-relaxed">为狼末武器定制了带有流光效果的材质，并通过后处理（Post-Processing）进行Bloom 增强。</p>
                             </li>
                           </ul>
                         </div>
