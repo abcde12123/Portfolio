@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from './views/HomeView.vue'
 import PortfolioView from './views/PortfolioView.vue'
+import SkillsView from './views/SkillsView.vue'
+import GamingView from './views/GamingView.vue'
 
 const routes = [
   {
@@ -14,6 +16,18 @@ const routes = [
     name: 'portfolio',
     component: PortfolioView,
     meta: { index: 2 }
+  },
+  {
+    path: '/skills',
+    name: 'skills',
+    component: SkillsView,
+    meta: { index: 3 }
+  },
+  {
+    path: '/gaming',
+    name: 'gaming',
+    component: GamingView,
+    meta: { index: 4 }
   }
 ]
 

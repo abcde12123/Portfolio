@@ -24,11 +24,16 @@
         庹芮豪 (Tuo Ruihao) // REAL-TIME VFX ARTIST
       </div>
       
-      <h1 class="text-7xl md:text-[10rem] font-black tracking-[-0.05em] mb-8 leading-[0.9] uppercase italic">
-        <span class="block text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">Vision</span>
-        <span class="vfx-gradient-text">Beyond</span>
-        <span class="block text-outline opacity-20">Reality</span>
-      </h1>
+      <div class="relative mb-12 py-10">
+        <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-10">
+          <span class="text-[12rem] md:text-[20rem] font-black uppercase tracking-tighter select-none leading-none">VFX</span>
+        </div>
+        <h1 class="text-6xl md:text-8xl font-black tracking-tight uppercase leading-[0.95]">
+          <span class="block text-white mb-2">Unreal Engine</span>
+          <span class="vfx-gradient-text block">Special Effects</span>
+          <span class="block text-white mt-2">Architect</span>
+        </h1>
+      </div>
       
       <p class="max-w-2xl mx-auto text-lg text-slate-400 mb-12 leading-relaxed font-medium">
         湖北工业大学 · 数字媒体技术。熟悉 <span class="text-blue-400 border-b border-blue-500/30">UE5 Niagara</span>、<span class="text-blue-400 border-b border-blue-500/30">UE C++</span> 与 <span class="text-blue-400 border-b border-blue-500/30">VFX 材质系统</span>。

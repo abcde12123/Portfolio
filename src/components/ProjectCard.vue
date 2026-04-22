@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import type { Project } from '../types';
 
 defineProps<{
   project: Project;
 }>();
+
+const showTechData = ref(false);
 </script>
 
 <template>
@@ -16,14 +19,21 @@ defineProps<{
         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
       <!-- 悬浮遮罩 -->
-      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-sm">
         <a 
           :href="project.link || '#'" 
           target="_blank"
-          class="px-6 py-2 bg-blue-600 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl"
+          class="px-6 py-2 bg-blue-600 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-blue-500"
         >
           {{ project.isVFX ? '观看特效演示' : '查看项目详情' }}
         </a>
+        <button 
+          v-if="project.technicalData"
+          @click="showTechData = !showTechData"
+          class="px-6 py-2 bg-white/10 text-white text-xs font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75 hover:bg-white/20 border border-white/10"
+        >
+          {{ showTechData ? '隐藏技术细节' : '查看 Niagara 源码' }}
+        </button>
       </div>
       <!-- 特效角标 -->
       <div v-if="project.isVFX" class="absolute top-3 left-3 px-2 py-1 bg-blue-600/90 text-white text-[10px] font-black uppercase tracking-tighter rounded backdrop-blur-md">
@@ -41,7 +51,7 @@ defineProps<{
       <p class="text-slate-400 text-xs leading-relaxed line-clamp-2 mb-4">{{ project.description }}</p>
       
       <!-- 标签 -->
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-2 mb-4">
         <span 
           v-for="tag in project.tags" 
           :key="tag"
@@ -50,9 +60,28 @@ defineProps<{
           #{{ tag }}
         </span>
       </div>
+
+      <!-- 技术细节展示区域 (高级 UI) -->
+      <transition name="slide-up">
+        <div v-if="showTechData && project.technicalData" class="mt-4 p-3 bg-slate-950 rounded border border-blue-500/30 font-mono text-[10px] text-blue-300/80 overflow-x-auto max-h-40">
+          <pre class="whitespace-pre-wrap leading-tight">{{ project.technicalData }}</pre>
+        </div>
+      </transition>
     </div>
 
     <!-- 底部装饰线 -->
     <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-500 group-hover:w-full"></div>
   </div>
 </template>
+
+<style scoped>
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.3s ease-out;
+}
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+</style>

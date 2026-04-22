@@ -3,25 +3,6 @@ import HeroSection from '../components/HeroSection.vue'
 import ProjectCard from '../components/ProjectCard.vue'
 import { projects } from '../types'
 
-const skillGroups = [
-  {
-    title: "特效与引擎",
-    skills: [
-      { name: "Unreal Engine (熟悉 Niagara/C++/蓝图)", level: "95%" },
-      { name: "VFX 材质系统与渲染管线", level: "90%" },
-      { name: "Gameplay 逻辑与特效联动", level: "85%" }
-    ]
-  },
-  {
-    title: "美术与工作流",
-    skills: [
-      { name: "Maya / Substance Painter", level: "85%" },
-      { name: "PBR 材质 / Shader 开发", level: "80%" },
-      { name: "SVN / Git 版本管理", level: "90%" }
-    ]
-  }
-];
-
 const gamingExperience = [
   { genre: "STG", description: "Apex (1401h), 守望先锋 (430h), 终焉之莉莉 (320h)" },
   { genre: "RPG", description: "黑神话:悟空 (36h), 艾尔登法环 (30h), 荒野大镖客2 (28h)" },
@@ -74,7 +55,7 @@ const featuredProjects = [...projects].sort((a, b) => (b.isVFX ? 1 : 0) - (a.isV
           <router-link to="/portfolio" class="group flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-blue-600 text-white font-bold rounded-lg transition-all border border-slate-700 hover:border-blue-500">
             查看全部作品
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="17 8l4 4m0 0l-4 4m4-4H3" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </router-link>
         </div>
@@ -89,45 +70,39 @@ const featuredProjects = [...projects].sort((a, b) => (b.isVFX ? 1 : 0) - (a.isV
       </div>
     </section>
 
-    <!-- 技能与技术栈 -->
+    <!-- 技能概览 -->
     <section id="skills" class="py-24 bg-slate-900/50">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-5xl font-black text-white mb-16 text-center">核心 <span class="text-blue-500">技能</span></h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-          <div v-for="group in skillGroups" :key="group.title" class="space-y-8">
-            <h3 class="text-xl font-bold text-white flex items-center gap-3">
-              <span class="w-8 h-px bg-blue-500"></span> {{ group.title }}
-            </h3>
-            <div class="space-y-6">
-              <div v-for="skill in group.skills" :key="skill.name">
-                <div class="flex justify-between mb-2">
-                  <span class="text-slate-300 font-medium">{{ skill.name }}</span>
-                  <span class="text-blue-400 font-mono text-sm">{{ skill.level }}</span>
-                </div>
-                <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
-                  <div class="h-full bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full transition-all duration-1000" :style="{ width: skill.level }"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">核心 <span class="text-blue-500">技能</span></h2>
+        <p class="text-slate-400 max-w-2xl mx-auto mb-12">
+          深耕 UE 引擎生态，专注于实时特效与程序的深度融合。涵盖 Niagara 特效、C++ Gameplay 以及 材质渲染管线。
+        </p>
+        <router-link to="/skills" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-800 hover:bg-blue-600 text-white font-bold rounded-lg transition-all border border-slate-700 hover:border-blue-500 group">
+          查看详细技能树
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </router-link>
       </div>
     </section>
 
-    <!-- 游戏经历 -->
+    <!-- 游戏经历概览 -->
     <section id="gaming" class="py-24">
       <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl font-black text-white mb-4 italic uppercase tracking-widest">Gamer <span class="text-blue-500">DNA</span></h2>
-            <p class="text-slate-500 italic">“深度的游戏阅历是理解特效设计的基石”</p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div v-for="exp in gamingExperience" :key="exp.genre" class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-blue-500/30 transition-colors">
-              <div class="text-blue-500 font-black mb-2">{{ exp.genre }}</div>
-              <div class="text-slate-400 text-sm leading-relaxed">{{ exp.description }}</div>
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-black text-white mb-8 italic uppercase tracking-widest">Gamer <span class="text-blue-500">DNA</span></h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div v-for="exp in gamingExperience.slice(0, 4)" :key="exp.genre" class="p-4 bg-slate-900/50 border border-slate-800 rounded-xl">
+              <div class="text-blue-500 font-black mb-1 text-sm">{{ exp.genre }}</div>
+              <div class="text-slate-500 text-[10px] uppercase font-bold tracking-tighter">Experienced</div>
             </div>
           </div>
+          <router-link to="/gaming" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-800 hover:bg-blue-600 text-white font-bold rounded-lg transition-all border border-slate-700 hover:border-blue-500 group">
+            查看完整游戏履历
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </router-link>
         </div>
       </div>
     </section>

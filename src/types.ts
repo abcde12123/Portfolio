@@ -7,9 +7,28 @@ export interface Project {
   tags: string[];
   link?: string;
   isVFX: boolean;
+  technicalData?: string;
 }
 
 export const projects: Project[] = [
+  {
+    id: 6,
+    title: "UE 冰霜技能特效 (NS_Ice)",
+    category: "UE VFX / Niagara",
+    description: "利用 Niagara 系统构建的冰霜材质与粒子交互特效。实现了基于深度的冻结效果与冰晶折射材质。",
+    thumbnail: "https://images.unsplash.com/photo-1548543604-a87c9909abec?q=80&w=1000&auto=format&fit=crop",
+    tags: ["Niagara", "UE5", "Ice Shader", "Particle Dynamics"],
+    link: "#",
+    isVFX: true,
+    technicalData: `Begin Object Class=/Script/NiagaraEditor.NiagaraOverviewNode Name="NiagaraOverviewNode_1"
+    OwningSystem="/Script/Niagara.NiagaraSystem'/Game/Ice/FX/NS_Ice.NS_Ice'" 
+    EmitterHandleGuid=855112AD4A840223209C038F292ACC9E 
+    NodePosX=144 
+    NodePosY=256 
+    bUserSetEnabledState=True 
+    NodeGuid=3108CCD7413C912B377DCE811539C190 
+End Object`
+  },
   {
     id: 1,
     title: "基于 UE5 的 2D 模拟 PVZ 项目",

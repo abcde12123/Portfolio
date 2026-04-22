@@ -43,11 +43,11 @@ watch(() => route?.path, () => {
         </router-link>
         
         <div class="hidden md:flex items-center gap-8">
-          <router-link to="/" class="nav-link">首页</router-link>
+          <router-link to="/" class="nav-link" exact-active-class="active">首页</router-link>
           <router-link to="/portfolio" class="nav-link">全部作品</router-link>
-          <router-link to="/#skills" class="nav-link">技能</router-link>
-          <router-link to="/#gaming" class="nav-link">游戏经历</router-link>
-          <a href="#contact" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-600/20">
+          <router-link to="/skills" class="nav-link">技能</router-link>
+          <router-link to="/gaming" class="nav-link">游戏经历</router-link>
+          <a href="#contact" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-600/20 ml-4">
             联系我
           </a>
         </div>
@@ -90,7 +90,7 @@ watch(() => route?.path, () => {
           </div>
           <div class="flex flex-wrap gap-4 justify-center md:justify-end">
              <a href="https://github.com/abcde12123" target="_blank" class="px-8 py-4 bg-white/5 border border-white/10 rounded text-white font-bold hover:bg-white/10 transition-all">GitHub</a>
-             <a href="https://space.bilibili.com/39316523" target="_blank" class="px-8 py-4 bg-blue-600 rounded text-white font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">Bilibili</a>
+             <a href="https://space.bilibili.com/401005764?spm_id_from=333.1007.0.0" target="_blank" class="px-8 py-4 bg-blue-600 rounded text-white font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">Bilibili</a>
           </div>
         </div>
         <div class="mt-24 pt-8 border-t border-white/5 text-center text-slate-600 text-xs tracking-widest uppercase">
@@ -102,6 +102,8 @@ watch(() => route?.path, () => {
 </template>
 
 <style>
+@reference "./style.css";
+
 /* 导航链接样式 */
 .nav-link {
   @apply text-sm font-medium text-slate-400 hover:text-white transition-all relative py-1;
@@ -113,10 +115,12 @@ watch(() => route?.path, () => {
 .nav-link:hover::after {
   @apply w-full;
 }
-.router-link-active.nav-link {
+.router-link-active.nav-link,
+.active.nav-link {
   @apply text-white;
 }
-.router-link-active.nav-link::after {
+.router-link-active.nav-link::after,
+.active.nav-link::after {
   @apply w-full;
 }
 
