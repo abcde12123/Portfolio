@@ -10,8 +10,8 @@ const gamingExperience = [
   { genre: "SLG/沙盒", description: "植物大战僵尸 (140h), 泰拉瑞亚 (600h), 史莱姆牧场 (43h)" }
 ];
 
-// 首页只显示前两个项目，且优先显示特效类
-const featuredProjects = [...projects].sort((a, b) => (b.isVFX ? 1 : 0) - (a.isVFX ? 1 : 0)).slice(0, 2);
+// 首页显示前三个项目，且优先显示特效类
+const featuredProjects = [...projects].sort((a, b) => (b.isVFX ? 1 : 0) - (a.isVFX ? 1 : 0)).slice(0, 3);
 
 const vfxSkills = [
   { name: '虚幻引擎', color: 'bg-slate-800 text-white border-slate-700', icon: 'UE' },
@@ -43,7 +43,7 @@ const extendedSkills = [
       <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center border border-blue-500/30">
-             <span class="text-blue-400 font-bold">EDU</span>
+             <span class="text-blue-400 font-bold text-xs">HBUT</span>
           </div>
           <div>
             <h3 class="text-white font-bold">湖北工业大学</h3>
@@ -79,7 +79,7 @@ const extendedSkills = [
           </router-link>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <ProjectCard 
             v-for="project in featuredProjects" 
             :key="project.id" 

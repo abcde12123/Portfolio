@@ -16,7 +16,7 @@ export const projects: Project[] = [
     title: "UE 火焰技能特效",
     category: "UE VFX / Niagara",
     description: "利用 Niagara 系统制作的高级火焰技能特效，结合动画蓝图与通知触发，实现流畅的打击感视觉效果。",
-    thumbnail: "/images/fire_vfx.jpeg",
+    thumbnail: "/images/Fire_vfx.webp",
     tags: ["Niagara", "UE5", "材质系统", "火焰特效"],
     link: "#",
     isVFX: true
@@ -42,6 +42,16 @@ export const projects: Project[] = [
     isVFX: true
   },
   {
+    id: 8,
+    title: "UE 祭坛展示场景 (VFX Showcase)",
+    category: "场景特效 / 渲染",
+    description: "结合狼末武器模型，在 UE 中搭建的黑暗风格祭坛展示场景。通过粒子系统、后处理特效及动态光影，营造出极具氛围感的视觉表现。",
+    thumbnail: "/images/altar_vfx_showcase.jpg",
+    tags: ["场景渲染", "动态光影", "后处理特效", "氛围营造"],
+    link: "#",
+    isVFX: true
+  },
+  {
     id: 3,
     title: "UE 虚拟场景制作 (环境特效)",
     category: "环境特效 / 渲染",
@@ -55,8 +65,8 @@ export const projects: Project[] = [
     id: 1,
     title: "基于 UE5 的 2D 模拟 PVZ 项目",
     category: "游戏开发 / 逻辑系统",
-    description: "在模拟《植物大战僵尸》的基础上，实现了地图生成、背包系统、编辑器、商店、装备、整装效果等功能。包含完整的 UI 逻辑和游戏流程控制，以及 BUFF 系统。",
-    thumbnail: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop",
+    description: "在模拟《植物大战僵尸》的基础上，实现了地图生成、背包系统、编辑器、商店、装备、整装效果等功能。包含完整的 UI 逻辑 and 游戏流程控制，以及 BUFF 系统。",
+    thumbnail: "/images/PVZ2D.webp",
     tags: ["UE5", "蓝图系统", "UI 框架", "存档系统", "BUFF 系统"],
     link: "https://www.bilibili.com/video/BV1GSkB8Eepj/",
     isVFX: false
