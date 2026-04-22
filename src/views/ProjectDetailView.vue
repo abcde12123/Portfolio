@@ -10,6 +10,7 @@ const projectId = computed(() => Number(route.params.id));
 const project = computed(() => projects.find(p => p.id === projectId.value));
 
 const selectedImage = ref<string | null>(null);
+const showControls = ref(false);
 
 const openImage = (src: string) => {
   selectedImage.value = src;
@@ -84,7 +85,7 @@ const bilibiliBvid = computed(() => {
                   </h2>
 
                   <!-- 视频内嵌区域 -->
-                  <div v-if="bilibiliBvid && project.id !== 8" class="mb-12">
+                  <div v-if="bilibiliBvid && ![5, 8].includes(project.id)" class="mb-12">
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                       <iframe 
                         :src="`//player.bilibili.com/player.html?bvid=${bilibiliBvid}&page=1&high_quality=1&danmaku=0&autoplay=0&muted=1`" 
@@ -99,14 +100,43 @@ const bilibiliBvid = computed(() => {
                     <p class="text-slate-500 text-xs mt-4 text-center italic">若无法播放，请点击右侧按钮跳转至 Bilibili 观看</p>
                   </div>
 
-                  <!-- 项目 id 8 特有的高性能视频内嵌 -->
-                  <div v-if="project.id === 8" class="mb-12">
-                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group">
+                  <!-- 项目 id 5 特有的高性能视频内嵌 -->
+                  <div v-if="project.id === 5" class="mb-12">
+                    <div 
+                      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group"
+                      @mouseenter="showControls = true"
+                      @mouseleave="showControls = false"
+                    >
                       <video 
                         autoplay 
                         loop 
                         muted 
                         playsinline 
+                        :controls="showControls"
+                        class="w-full h-full object-cover"
+                        poster="/images/Fire_vfx.webp"
+                      >
+                        <source :src="project.link" type="video/webm">
+                        您的浏览器不支持 video 标签。
+                      </video>
+                      <!-- 装饰性叠加层 -->
+                      <div v-if="!showControls" class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+
+                  <!-- 项目 id 8 特有的高性能视频内嵌 -->
+                  <div v-if="project.id === 8" class="mb-12">
+                    <div 
+                      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group"
+                      @mouseenter="showControls = true"
+                      @mouseleave="showControls = false"
+                    >
+                      <video 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline 
+                        :controls="showControls"
                         class="w-full h-full object-cover"
                         poster="/images/LM_CJ.webp"
                       >
@@ -114,7 +144,7 @@ const bilibiliBvid = computed(() => {
                         您的浏览器不支持 video 标签。
                       </video>
                       <!-- 装饰性叠加层 -->
-                      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none"></div>
+                      <div v-if="!showControls" class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none transition-opacity duration-300"></div>
                     </div>
                   </div>
 
@@ -381,6 +411,32 @@ const bilibiliBvid = computed(() => {
                       </div>
                     </template>
 
+                    <!-- UE 火焰技能特效 (id: 5) 特有内容 -->
+                    <template v-if="project.id === 5">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            核心表现与实现
+                          </h3>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">火焰燃烧效果</strong>
+                              <p class="text-sm leading-relaxed">采用3层半透明扰动材质叠加，实现真实的火焰燃烧。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">事件处理器</strong>
+                              <p class="text-sm leading-relaxed">使用Location Event实现粒子发射器跟随刀光，使粒子生成更贴合实际。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">地裂效果</strong>
+                              <p class="text-sm leading-relaxed">使用类贴花网格体材质实现在网格体上模拟贴画效果，解决了地面凹凸情况下拉伸的问题。</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </template>
+
                     <!-- UE 祭坛展示场景 (id: 8) 特有内容 -->
                     <template v-if="project.id === 8">
                       <div class="space-y-8 my-12 text-slate-300">
@@ -410,7 +466,7 @@ const bilibiliBvid = computed(() => {
                         </div>
                       </div>
                     </template>
-                    <div v-if="![1, 2, 4, 7, 8].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <div v-if="![1, 2, 4, 5, 7, 8].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
@@ -468,15 +524,15 @@ const bilibiliBvid = computed(() => {
                     <template v-else>
                       <div class="flex items-center gap-2 mb-2">
                         <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
-                        特效制作 (Niagara/VFX)
+                        特效制作
                       </div>
                       <div class="flex items-center gap-2 mb-2">
                         <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
-                        材质逻辑 (Material Shader)
+                        材质逻辑
                       </div>
                       <div class="flex items-center gap-2">
                         <span class="w-1 h-1 bg-blue-500 rounded-full"></span>
-                        渲染优化 (Rendering)
+                        渲染优化
                       </div>
                     </template>
                   </div>
