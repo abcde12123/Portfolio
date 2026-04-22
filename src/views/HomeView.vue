@@ -128,25 +128,26 @@ const extendedSkills = [
 
         <!-- 第二行：拓展技能 (稍小) -->
         <div class="flex whitespace-nowrap">
-          <div class="flex animate-marquee-reverse">
-            <div v-for="skill in extendedSkills" :key="skill.name" 
-                 class="mx-3 flex items-center gap-3 px-6 py-3 bg-slate-800/30 backdrop-blur-sm border rounded-xl transition-all hover:bg-white/10 hover:border-white/20"
-                 :class="skill.color">
-              <div class="w-8 h-8 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-[10px] shadow-inner">
-                {{ skill.icon }}
+          <div class="flex flex-none w-max animate-marquee-reverse" style="animation-delay: -12s;">
+            <div class="flex flex-none">
+              <div v-for="skill in extendedSkills" :key="skill.name" 
+                   class="mx-3 flex items-center gap-3 px-6 py-3 bg-slate-800/30 backdrop-blur-sm border rounded-xl transition-all hover:bg-white/10 hover:border-white/20"
+                   :class="skill.color">
+                <div class="w-8 h-8 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-[10px] shadow-inner">
+                  {{ skill.icon }}
+                </div>
+                <span class="text-base font-bold tracking-tight">{{ skill.name }}</span>
               </div>
-              <span class="text-base font-bold tracking-tight">{{ skill.name }}</span>
             </div>
-          </div>
-          <!-- 复制一份实现无缝滚动 -->
-          <div class="flex animate-marquee-reverse" aria-hidden="true">
-            <div v-for="skill in extendedSkills" :key="skill.name + '-clone'" 
-                 class="mx-3 flex items-center gap-3 px-6 py-3 bg-slate-800/30 backdrop-blur-sm border rounded-xl transition-all hover:bg-white/10 hover:border-white/20"
-                 :class="skill.color">
-              <div class="w-8 h-8 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-[10px] shadow-inner">
-                {{ skill.icon }}
+            <div class="flex flex-none" aria-hidden="true">
+              <div v-for="skill in extendedSkills" :key="skill.name + '-clone'" 
+                   class="mx-3 flex items-center gap-3 px-6 py-3 bg-slate-800/30 backdrop-blur-sm border rounded-xl transition-all hover:bg-white/10 hover:border-white/20"
+                   :class="skill.color">
+                <div class="w-8 h-8 flex items-center justify-center bg-slate-900/80 rounded-lg font-black text-[10px] shadow-inner">
+                  {{ skill.icon }}
+                </div>
+                <span class="text-base font-bold tracking-tight">{{ skill.name }}</span>
               </div>
-              <span class="text-base font-bold tracking-tight">{{ skill.name }}</span>
             </div>
           </div>
         </div>
@@ -193,8 +194,8 @@ const extendedSkills = [
 }
 
 @keyframes marquee-reverse {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(50%); }
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 .animate-marquee {
