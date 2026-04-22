@@ -26,9 +26,9 @@ export const projects: Project[] = [
     title: "UE 冰霜技能特效",
     category: "UE VFX / Niagara",
     description: "利用 Niagara 系统构建的冰霜材质与粒子交互特效。实现了基于深度的冻结效果与冰晶折射材质。",
-    thumbnail: "https://images.unsplash.com/photo-1548543604-a87c9909abec?q=80&w=1000&auto=format&fit=crop",
+    thumbnail: "/images/Ice.webp",
     tags: ["Niagara", "UE5", "Ice Shader"],
-    link: "#",
+    link: "/videos/Ice.mp4",
     isVFX: true
   },
   {
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     title: "UE 虚拟场景制作 (环境特效)",
     category: "环境特效 / 渲染",
     description: "着重实现真实的水体模拟、PCG 植被生成、材质的修改和复用，以及 UE 与 3ds Max 的模型联动。",
-    thumbnail: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop",
+    thumbnail: "/images/R5.webp",
     tags: ["水体模拟", "PCG", "材质编辑", "3ds Max"],
     link: "#",
     isVFX: true

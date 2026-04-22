@@ -85,7 +85,7 @@ const bilibiliBvid = computed(() => {
                   </h2>
 
                   <!-- 视频内嵌区域 -->
-                  <div v-if="bilibiliBvid && ![5, 8].includes(project.id)" class="mb-12">
+                  <div v-if="bilibiliBvid && ![5, 6, 8].includes(project.id)" class="mb-12">
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                       <iframe 
                         :src="`//player.bilibili.com/player.html?bvid=${bilibiliBvid}&page=1&high_quality=1&danmaku=0&autoplay=0&muted=1`" 
@@ -111,12 +111,34 @@ const bilibiliBvid = computed(() => {
                         autoplay 
                         loop 
                         muted 
-                        playsinline 
                         :controls="showControls"
                         class="w-full h-full object-cover"
                         poster="/images/Fire_vfx.webp"
                       >
                         <source :src="project.link" type="video/webm">
+                        您的浏览器不支持 video 标签。
+                      </video>
+                      <!-- 装饰性叠加层 -->
+                      <div v-if="!showControls" class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+
+                  <!-- 项目 id 6 特有的高性能视频内嵌 -->
+                  <div v-if="project.id === 6" class="mb-12">
+                    <div 
+                      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group"
+                      @mouseenter="showControls = true"
+                      @mouseleave="showControls = false"
+                    >
+                      <video 
+                        autoplay 
+                        loop 
+                        muted 
+                        :controls="showControls"
+                        class="w-full h-full object-cover"
+                        poster="/images/Ice.webp"
+                      >
+                        <source :src="project.link" type="video/mp4">
                         您的浏览器不支持 video 标签。
                       </video>
                       <!-- 装饰性叠加层 -->
@@ -135,7 +157,6 @@ const bilibiliBvid = computed(() => {
                         autoplay 
                         loop 
                         muted 
-                        playsinline 
                         :controls="showControls"
                         class="w-full h-full object-cover"
                         poster="/images/LM_CJ.webp"
@@ -168,6 +189,39 @@ const bilibiliBvid = computed(() => {
                             <img src="/images/LM_Material.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
                           <p class="text-base text-slate-400 text-center italic font-medium">Substance Painter 材质全流程制作 / PBR Texturing Workflow</p>
+                        </div>
+                      </div>
+                    </template>
+
+                    <!-- UE 虚拟场景制作 (id: 3) 特有内容 -->
+                    <template v-if="project.id === 3">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <!-- 项目图库展示：2个一行 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                          <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R1.webp')">
+                              <img src="/images/R1.webp" alt="Virtual Scene Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">水体模拟</p>
+                          </div>
+                          <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R2.webp')">
+                              <img src="/images/R2.webp" alt="Virtual Scene Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">PCG 植被生成</p>
+                          </div>
+                          <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R3.webp')">
+                              <img src="/images/R3.webp" alt="Virtual Scene Preview 3" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">材质修改与复用</p>
+                          </div>
+                          <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R4.webp')">
+                              <img src="/images/R4.webp" alt="Virtual Scene Preview 4" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">UE 与 3ds Max 模型联动</p>
+                          </div>
                         </div>
                       </div>
                     </template>
@@ -437,6 +491,28 @@ const bilibiliBvid = computed(() => {
                       </div>
                     </template>
 
+                    <!-- UE 冰霜技能特效 (id: 6) 特有内容 -->
+                    <template v-if="project.id === 6">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            核心表现与实现
+                          </h3>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">冰晶材质</strong>
+                              <p class="text-sm leading-relaxed">实现了基于深度的冻结效果与冰晶折射材质。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">粒子交互</strong>
+                              <p class="text-sm leading-relaxed">Niagara 系统构建的冰霜粒子交互特效。</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </template>
+
                     <!-- UE 祭坛展示场景 (id: 8) 特有内容 -->
                     <template v-if="project.id === 8">
                       <div class="space-y-8 my-12 text-slate-300">
@@ -466,7 +542,7 @@ const bilibiliBvid = computed(() => {
                         </div>
                       </div>
                     </template>
-                    <div v-if="![1, 2, 4, 5, 7, 8].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
