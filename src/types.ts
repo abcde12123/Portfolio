@@ -36,7 +36,7 @@ export const projects: Project[] = [
     title: "《原神》狼末武器模型与材质全流程制作",
     category: "3D Art / VFX Support",
     description: "完成了狼末武器的高低模制作、UV 拆解及材质表现。通过合理的 UV 布局与多通道 Mask 设计，为后续特效动画提供了精准的材质控制接口。",
-    thumbnail: "/images/wolf_marrow_uv.jpg",
+    thumbnail: "/images/LM_MAYA.webp",
     tags: ["模型制作", "材质表现", "UV 布局", "Mask 设计"],
     link: "#",
     isVFX: true

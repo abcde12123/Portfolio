@@ -20,14 +20,19 @@ const bilibiliBvid = computed(() => {
 </script>
 
 <template>
-  <div v-if="project" class="min-h-screen bg-slate-950 pt-32 pb-24 relative overflow-hidden">
+  <div v-if="project" class="min-h-screen bg-slate-950 pt-20 pb-24 relative overflow-hidden">
     <!-- 背景装饰 -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-blue-600/10 blur-[120px] rounded-full opacity-50"></div>
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full"></div>
+    </div>
 
     <div class="container mx-auto px-6 relative z-10">
-      <!-- 导航 -->
-      <button @click="goBack" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-12">
+      <!-- 返回按钮 -->
+      <button 
+        @click="goBack"
+        class="group flex items-center gap-3 text-slate-500 hover:text-white transition-all mb-8"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
@@ -86,6 +91,24 @@ const bilibiliBvid = computed(() => {
                   </h2>
                   <!-- 这里是将来放正文内容的地方 -->
                   <div class="space-y-6 text-slate-300 text-lg leading-relaxed">
+                    <!-- 狼末项目特有的图片展示 -->
+                    <template v-if="project.id === 7">
+                      <div class="space-y-12 my-12">
+                        <div class="space-y-4">
+                          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
+                            <img src="/images/LM_MAYA.webp" alt="Maya Modeling" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                          </div>
+                          <p class="text-base text-slate-400 text-center italic font-medium">Maya 高低模建模阶段 / High & Low Poly Modeling</p>
+                        </div>
+                        <div class="space-y-4">
+                          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
+                            <img src="/images/LM_Material.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                          </div>
+                          <p class="text-base text-slate-400 text-center italic font-medium">Substance Painter 材质全流程制作 / PBR Texturing Workflow</p>
+                        </div>
+                      </div>
+                    </template>
+
                     <div class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>

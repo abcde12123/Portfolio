@@ -8,7 +8,7 @@ const otherProjects = projects.filter(p => !p.isVFX);
 </script>
 
 <template>
-  <div class="min-h-screen pt-32 pb-24 relative overflow-hidden bg-slate-950">
+  <div class="min-h-screen pt-20 pb-24 relative overflow-hidden bg-slate-950">
     <!-- 背景装饰 -->
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
       <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full"></div>
@@ -17,7 +17,7 @@ const otherProjects = projects.filter(p => !p.isVFX);
 
     <div class="container mx-auto px-6 relative z-10">
       <!-- 头部标题 -->
-      <div class="mb-20 text-center md:text-left">
+      <div class="mb-12 text-center md:text-left">
         <div class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4">
           Archives // 2023-2027
         </div>
