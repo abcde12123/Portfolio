@@ -73,7 +73,7 @@ const bilibiliBvid = computed(() => {
                   <div v-if="bilibiliBvid" class="mb-12">
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                       <iframe 
-                        :src="`//player.bilibili.com/player.html?bvid=${bilibiliBvid}&page=1&high_quality=1&danmaku=0`" 
+                        :src="`//player.bilibili.com/player.html?bvid=${bilibiliBvid}&page=1&high_quality=1&danmaku=0&autoplay=0&muted=1`" 
                         scrolling="no" 
                         border="0" 
                         frameborder="no" 

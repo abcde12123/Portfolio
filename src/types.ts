@@ -63,10 +63,10 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: "校内 MiniGame 创作大赛：俄罗斯方块变体",
+    title: "校内 MiniGame 创作大赛：Neowise",
     category: "比赛项目 / 主程序",
     description: "作为主程序负责 3C 设计、逻辑构建及高弹判定系统。在 7 天内完成完整游戏 Demo，获得最佳评审奖第二名。",
-    thumbnail: "https://images.unsplash.com/photo-1544333346-604274984405?q=80&w=1000&auto=format&fit=crop",
+    thumbnail: "/images/Neowise.webp",
     tags: ["主程序", "3C 设计", "碰撞判定"],
     link: "https://www.bilibili.com/video/BV1JjXsBPErp/",
     isVFX: false
