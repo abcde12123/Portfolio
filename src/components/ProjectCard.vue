@@ -1,16 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import type { Project } from '../types';
 
-defineProps<{
+const props = defineProps<{
   project: Project;
 }>();
 
-const showTechData = ref(false);
+const router = useRouter();
+
+const goToDetail = () => {
+  router.push({ name: 'project-detail', params: { id: props.project.id } });
+};
 </script>
 
 <template>
-  <div class="group relative bg-slate-900/40 border border-white/5 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)]">
+  <div 
+    class="group relative bg-slate-900/40 border border-white/5 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] cursor-pointer"
+    @click="goToDetail"
+  >
     <!-- 缩略图区域 -->
     <div class="relative aspect-video overflow-hidden">
       <img 
@@ -20,19 +27,11 @@ const showTechData = ref(false);
       />
       <!-- 悬浮遮罩 -->
       <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-sm">
-        <a 
-          :href="project.link || '#'" 
-          target="_blank"
+        <button 
+          @click.stop="goToDetail"
           class="px-6 py-2 bg-blue-600 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-blue-500"
         >
-          {{ project.isVFX ? '观看特效演示' : '查看项目详情' }}
-        </a>
-        <button 
-          v-if="project.technicalData"
-          @click="showTechData = !showTechData"
-          class="px-6 py-2 bg-white/10 text-white text-xs font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75 hover:bg-white/20 border border-white/10"
-        >
-          {{ showTechData ? '隐藏技术细节' : '查看 Niagara 源码' }}
+          {{ project.isVFX ? '查看特效详情' : '查看项目详情' }}
         </button>
       </div>
       <!-- 特效角标 -->
@@ -47,7 +46,12 @@ const showTechData = ref(false);
         <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
         <span class="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em]">{{ project.category }}</span>
       </div>
-      <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors mb-2">{{ project.title }}</h3>
+      <h3 
+        class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors mb-2"
+        @click.stop="goToDetail"
+      >
+        {{ project.title }}
+      </h3>
       <p class="text-slate-400 text-xs leading-relaxed line-clamp-2 mb-4">{{ project.description }}</p>
       
       <!-- 标签 -->
@@ -60,28 +64,9 @@ const showTechData = ref(false);
           #{{ tag }}
         </span>
       </div>
-
-      <!-- 技术细节展示区域 (高级 UI) -->
-      <transition name="slide-up">
-        <div v-if="showTechData && project.technicalData" class="mt-4 p-3 bg-slate-950 rounded border border-blue-500/30 font-mono text-[10px] text-blue-300/80 overflow-x-auto max-h-40">
-          <pre class="whitespace-pre-wrap leading-tight">{{ project.technicalData }}</pre>
-        </div>
-      </transition>
     </div>
 
     <!-- 底部装饰线 -->
     <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-500 group-hover:w-full"></div>
   </div>
 </template>
-
-<style scoped>
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: all 0.3s ease-out;
-}
-.slide-up-enter-from,
-.slide-up-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-}
-</style>

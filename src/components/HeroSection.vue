@@ -21,7 +21,7 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
         </span>
-        庹芮豪 (Tuo Ruihao) // REAL-TIME VFX ARTIST
+        夏夜 (XIA YE) // 正在寻找特效方向实习机会
       </div>
       
       <div class="relative mb-12 py-10">
@@ -36,8 +36,8 @@
       </div>
       
       <p class="max-w-2xl mx-auto text-lg text-slate-400 mb-12 leading-relaxed font-medium">
-        湖北工业大学 · 数字媒体技术。熟悉 <span class="text-blue-400 border-b border-blue-500/30">UE5 Niagara</span>、<span class="text-blue-400 border-b border-blue-500/30">UE C++</span> 与 <span class="text-blue-400 border-b border-blue-500/30">VFX 材质系统</span>。
-        以视觉冲击力为核心，致力于将特效深度融入 Gameplay，创造极致的实时交互体验。
+        湖北工业大学 · 数字媒体技术。熟悉 <span class="text-blue-400 border-b border-blue-500/30">UE5 Niagara</span> 与 <span class="text-blue-400 border-b border-blue-500/30">材质系统</span>。
+        以视觉冲击力为核心，致力于将特效深度融入 Gameplay 中，创造极致的实时交互体验。
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6">

@@ -12,22 +12,34 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 5,
+    title: "UE 火焰技能特效",
+    category: "UE VFX / Niagara",
+    description: "利用 Niagara 系统制作的高级火焰技能特效，结合动画蓝图与通知触发，实现流畅的打击感视觉效果。",
+    thumbnail: "/images/fire_vfx.jpeg",
+    tags: ["Niagara", "UE5", "材质系统", "火焰特效"],
+    link: "#",
+    isVFX: true
+  },
+  {
     id: 6,
-    title: "UE 冰霜技能特效 (NS_Ice)",
+    title: "UE 冰霜技能特效 (Niagara)",
     category: "UE VFX / Niagara",
     description: "利用 Niagara 系统构建的冰霜材质与粒子交互特效。实现了基于深度的冻结效果与冰晶折射材质。",
     thumbnail: "https://images.unsplash.com/photo-1548543604-a87c9909abec?q=80&w=1000&auto=format&fit=crop",
     tags: ["Niagara", "UE5", "Ice Shader", "Particle Dynamics"],
     link: "#",
-    isVFX: true,
-    technicalData: `Begin Object Class=/Script/NiagaraEditor.NiagaraOverviewNode Name="NiagaraOverviewNode_1"
-    OwningSystem="/Script/Niagara.NiagaraSystem'/Game/Ice/FX/NS_Ice.NS_Ice'" 
-    EmitterHandleGuid=855112AD4A840223209C038F292ACC9E 
-    NodePosX=144 
-    NodePosY=256 
-    bUserSetEnabledState=True 
-    NodeGuid=3108CCD7413C912B377DCE811539C190 
-End Object`
+    isVFX: true
+  },
+  {
+    id: 3,
+    title: "UE 虚拟场景制作 (环境特效)",
+    category: "环境特效 / 渲染",
+    description: "着重实现真实的水体模拟、PCG 植被生成、材质的修改和复用，以及 UE 与 3ds Max 的模型联动。",
+    thumbnail: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop",
+    tags: ["水体模拟", "PCG", "材质编辑", "3ds Max"],
+    link: "#",
+    isVFX: true
   },
   {
     id: 1,
@@ -50,16 +62,6 @@ End Object`
     isVFX: false
   },
   {
-    id: 3,
-    title: "UE 虚拟电影场景制作 (环境特效)",
-    category: "环境特效 / 渲染",
-    description: "着重实现真实的水体模拟、PCG 植被生成、材质的修改和复用，以及 UE 与 3ds Max 的模型联动。",
-    thumbnail: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop",
-    tags: ["水体模拟", "PCG", "材质编辑", "3ds Max"],
-    link: "https://github.com/abcde12123/Integrated-Landscape-Design",
-    isVFX: true
-  },
-  {
     id: 4,
     title: "校内 MiniGame 创作大赛：俄罗斯方块变体",
     category: "比赛项目 / 主程序",
@@ -68,15 +70,5 @@ End Object`
     tags: ["主程序", "3C 设计", "碰撞判定"],
     link: "https://www.bilibili.com/video/BV1JJxSBPBrp/",
     isVFX: false
-  },
-  {
-    id: 5,
-    title: "基于 Niagara 的火之呼吸特效演示",
-    category: "UE VFX",
-    description: "利用 Niagara 系统制作的高级火之呼吸特效，结合动画蓝图与通知触发，实现流畅的打击感视觉效果。",
-    thumbnail: "https://images.unsplash.com/photo-1550684847-75bdda21cc95?q=80&w=1000&auto=format&fit=crop",
-    tags: ["Niagara", "UE5", "材质系统", "火之呼吸"],
-    link: "#",
-    isVFX: true
   }
 ];

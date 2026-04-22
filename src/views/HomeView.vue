@@ -19,13 +19,13 @@ const vfxSkills = [
   { name: 'C++', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'C++' },
   { name: 'MAYA', color: 'bg-slate-800 text-white border-slate-700', icon: 'MY' },
   { name: 'Substance Painter', color: 'bg-red-900/30 text-red-400 border-red-500/30', icon: 'PT' },
-  { name: 'AE平面设计与特效制作', color: 'bg-purple-900/30 text-purple-400 border-purple-500/30', icon: 'AE' }
+  { name: 'AE平面设计与特效制作', color: 'bg-purple-900/30 text-purple-400 border-purple-500/30', icon: 'AE' },
+  { name: 'PhotoShop', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'PS' }
 ];
 
 const extendedSkills = [
   { name: 'PR以及剪映剪辑', color: 'bg-purple-900/30 text-purple-400 border-purple-500/30', icon: 'PR' },
   { name: '达芬奇及LightRoom调色', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'DV' },
-  { name: 'PhotoShop', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'PS' },
   { name: 'AN', color: 'bg-red-900/30 text-red-400 border-red-500/30', icon: 'AN' },
   { name: 'PPT', color: 'bg-orange-900/30 text-orange-400 border-orange-500/30', icon: 'PPT' },
   { name: 'Word', color: 'bg-blue-900/30 text-blue-400 border-blue-500/30', icon: 'WD' },
@@ -68,8 +68,8 @@ const extendedSkills = [
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
-            <h2 class="text-3xl md:text-5xl font-black text-white mb-4 italic">FEATURED <span class="text-blue-500">VFX WORKS</span></h2>
-            <p class="text-slate-500">以 Niagara 特效为核心，结合 C++ Gameplay 的深度实践</p>
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-4 italic">作品集</h2>
+            <p class="text-slate-500">以 Niagara 特效为核心，结合材质系统的深度实践</p>
           </div>
           <router-link to="/portfolio" class="group flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-blue-600 text-white font-bold rounded-lg transition-all border border-slate-700 hover:border-blue-500">
             查看全部作品
@@ -166,7 +166,8 @@ const extendedSkills = [
     <section id="gaming" class="py-24">
       <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl font-black text-white mb-8 italic uppercase tracking-widest">Gamer <span class="text-blue-500">DNA</span></h2>
+          <h2 class="text-3xl font-black text-white mb-4 italic uppercase tracking-widest">Gamer <span class="text-blue-500">DNA</span></h2>
+          <p class="text-slate-400 mb-10 italic">“深度的游戏阅历是理解特效设计的基石”</p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             <div v-for="exp in gamingExperience.slice(0, 4)" :key="exp.genre" class="p-4 bg-slate-900/50 border border-slate-800 rounded-xl">
               <div class="text-blue-500 font-black mb-1 text-sm">{{ exp.genre }}</div>

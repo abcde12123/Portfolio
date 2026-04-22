@@ -3,6 +3,7 @@ import HomeView from './views/HomeView.vue'
 import PortfolioView from './views/PortfolioView.vue'
 import SkillsView from './views/SkillsView.vue'
 import GamingView from './views/GamingView.vue'
+import ProjectDetailView from './views/ProjectDetailView.vue'
 
 const routes = [
   {
@@ -28,6 +29,12 @@ const routes = [
     name: 'gaming',
     component: GamingView,
     meta: { index: 4 }
+  },
+  {
+    path: '/project/:id',
+    name: 'project-detail',
+    component: ProjectDetailView,
+    meta: { index: 5 }
   }
 ]
 

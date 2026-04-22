@@ -35,10 +35,10 @@ watch(() => route?.path, () => {
     <!-- 导航栏 (增强毛玻璃与动态边框) -->
     <nav class="fixed top-0 w-full z-50 bg-slate-950/40 backdrop-blur-xl border-b border-white/5">
       <div class="container mx-auto px-6 h-20 flex items-center justify-between">
-        <router-link to="/" class="group flex items-center gap-2">
-          <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-black group-hover:rotate-12 transition-transform">庹</div>
-          <span class="text-xl font-black tracking-tighter text-white">
-            VFX<span class="text-blue-500 italic ml-1">LAB</span>
+        <router-link to="/" class="flex items-center gap-3 group">
+          <div class="px-2 py-1 bg-blue-600 rounded flex items-center justify-center text-white font-black group-hover:rotate-3 transition-transform text-sm tracking-tighter uppercase italic">夏夜</div>
+          <span class="text-xl font-black tracking-tighter text-white uppercase">
+            VFX
           </span>
         </router-link>
         
@@ -69,32 +69,32 @@ watch(() => route?.path, () => {
       <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
       
       <div class="container mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 class="text-4xl font-black text-white mb-6 leading-tight">探索<br/><span class="text-blue-500">特效与逻辑的融合</span></h2>
-            <p class="text-slate-400 mb-8 max-w-md">正在寻找特效/程序相关的实习或项目合作机会。随时欢迎交流技术或游戏心得。</p>
-            <div class="space-y-4">
-              <div class="flex items-center gap-4 text-slate-300">
-                <span class="text-blue-500 font-bold w-12 text-xs uppercase opacity-50">Email</span>
-                <span class="font-mono">xieye12123@qq.com</span>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+          <div class="flex-grow">
+            <h2 class="text-4xl font-black text-white mb-6 leading-tight whitespace-nowrap">寻找 <span class="text-blue-500">特效方向实习机会</span></h2>
+            <p class="text-slate-400 mb-8 whitespace-nowrap">正在寻找特效相关的实习或项目合作机会。随时欢迎交流技术或游戏心得。</p>
+            <div class="flex flex-row items-center gap-x-12 gap-y-4 whitespace-nowrap">
+              <div class="flex items-center gap-3 text-slate-300">
+                <span class="text-blue-500 font-black text-[10px] uppercase opacity-50 tracking-widest">Email</span>
+                <span class="font-mono text-sm">xieye12123@qq.com</span>
               </div>
-              <div class="flex items-center gap-4 text-slate-300">
-                <span class="text-blue-500 font-bold w-12 text-xs uppercase opacity-50">Phone</span>
-                <span class="font-mono">180-1177-2015</span>
+              <div class="flex items-center gap-3 text-slate-300">
+                <span class="text-blue-500 font-black text-[10px] uppercase opacity-50 tracking-widest">Phone</span>
+                <span class="font-mono text-sm">180-1177-2015</span>
               </div>
-              <div class="flex items-center gap-4 text-slate-300">
-                <span class="text-blue-500 font-bold w-12 text-xs uppercase opacity-50">City</span>
-                <span>湖北 · 武汉</span>
+              <div class="flex items-center gap-3 text-slate-300">
+                <span class="text-blue-500 font-black text-[10px] uppercase opacity-50 tracking-widest">City</span>
+                <span class="text-sm">湖北 · 武汉</span>
               </div>
             </div>
           </div>
-          <div class="flex flex-wrap gap-4 justify-center md:justify-end">
-             <a href="https://github.com/abcde12123" target="_blank" class="px-8 py-4 bg-white/5 border border-white/10 rounded text-white font-bold hover:bg-white/10 transition-all">GitHub</a>
-             <a href="https://space.bilibili.com/401005764?spm_id_from=333.1007.0.0" target="_blank" class="px-8 py-4 bg-blue-600 rounded text-white font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">Bilibili</a>
+          <div class="flex flex-wrap gap-4 shrink-0">
+             <a href="https://github.com/abcde12123" target="_blank" class="px-8 py-4 bg-white/5 border border-white/10 rounded text-white font-bold hover:bg-white/10 transition-all uppercase tracking-widest text-xs">GitHub</a>
+             <a href="https://space.bilibili.com/401005764?spm_id_from=333.1007.0.0" target="_blank" class="px-8 py-4 bg-blue-600 rounded text-white font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 uppercase tracking-widest text-xs">Bilibili</a>
           </div>
         </div>
-        <div class="mt-24 pt-8 border-t border-white/5 text-center text-slate-600 text-xs tracking-widest uppercase">
-          © 2026 庹芮豪 PORTFOLIO. ALL RIGHTS RESERVED.
+        <div class="mt-24 pt-8 border-t border-white/5 text-center text-slate-600 text-xs tracking-widest uppercase font-black">
+          © 2026 夏夜 PORTFOLIO. ALL RIGHTS RESERVED.
         </div>
       </div>
     </footer>
