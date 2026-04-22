@@ -43,10 +43,10 @@ export const projects: Project[] = [
   },
   {
     id: 8,
-    title: "UE 祭坛展示场景 (VFX Showcase)",
+    title: "UE 祭坛展示场景",
     category: "场景特效 / 渲染",
     description: "结合狼末武器模型，在 UE 中搭建的黑暗风格祭坛展示场景。通过粒子系统、后处理特效及动态光影，营造出极具氛围感的视觉表现。",
-    thumbnail: "/images/altar_vfx_showcase.jpg",
+    thumbnail: "/images/LM_CJ.webp",
     tags: ["场景渲染", "动态光影", "后处理特效", "氛围营造"],
     link: "#",
     isVFX: true

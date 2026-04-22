@@ -3,6 +3,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { projects } from '../types';
 import { computed, ref } from 'vue';
 
+// v1.0.1 - Video source updated and HMR reset
 const route = useRoute();
 const router = useRouter();
 const projectId = computed(() => Number(route.params.id));
@@ -29,6 +30,7 @@ const bilibiliBvid = computed(() => {
   const match = project.value.link.match(/BV[a-zA-Z0-9]+/);
   return match ? match[0] : null;
 });
+
 </script>
 
 <template>
@@ -82,7 +84,7 @@ const bilibiliBvid = computed(() => {
                   </h2>
 
                   <!-- 视频内嵌区域 -->
-                  <div v-if="bilibiliBvid" class="mb-12">
+                  <div v-if="bilibiliBvid && project.id !== 8" class="mb-12">
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                       <iframe 
                         :src="`//player.bilibili.com/player.html?bvid=${bilibiliBvid}&page=1&high_quality=1&danmaku=0&autoplay=0&muted=1`" 
@@ -95,6 +97,25 @@ const bilibiliBvid = computed(() => {
                       ></iframe>
                     </div>
                     <p class="text-slate-500 text-xs mt-4 text-center italic">若无法播放，请点击右侧按钮跳转至 Bilibili 观看</p>
+                  </div>
+
+                  <!-- 项目 id 8 特有的高性能视频内嵌 -->
+                  <div v-if="project.id === 8" class="mb-12">
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group">
+                      <video 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline 
+                        class="w-full h-full object-cover"
+                        poster="/images/LM_CJ.webp"
+                      >
+                        <source src="/videos/LM_Rending.webm" type="video/webm">
+                        您的浏览器不支持 video 标签。
+                      </video>
+                      <!-- 装饰性叠加层 -->
+                      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none"></div>
+                    </div>
                   </div>
 
                   <h2 class="text-3xl font-black text-white mb-8 flex items-center gap-4">
@@ -360,8 +381,36 @@ const bilibiliBvid = computed(() => {
                       </div>
                     </template>
 
-                    <!-- 默认展示内容 -->
-                    <div v-if="![1, 2, 4, 7].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <!-- UE 祭坛展示场景 (id: 8) 特有内容 -->
+                    <template v-if="project.id === 8">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            场景核心表现
+                          </h3>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">动态光影与氛围</strong>
+                              <p class="text-sm leading-relaxed">利用 UE5 的 Lumen 实时全局光照，配合动态点光源与体积雾，营造出压抑且具有史诗感的祭坛氛围。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">Niagara 粒子系统</strong>
+                              <p class="text-sm leading-relaxed">实现了围绕武器旋转的灰尘、火花以及祭坛底部的魔法阵光效，增强场景的生命力。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">自定义材质与后处理</strong>
+                              <p class="text-sm leading-relaxed">为狼末武器定制了带有流光效果的材质，并通过后处理（Post-Processing）进行色调映射与 Bloom 增强。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">场景布局与渲染</strong>
+                              <p class="text-sm leading-relaxed">通过 3ds Max 与 UE 的联动，精确控制祭坛台阶与周边的视觉构图，实现电影级的渲染输出。</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </template>
+                    <div v-if="![1, 2, 4, 7, 8].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
