@@ -62,13 +62,23 @@ export const projects: Project[] = [
     isVFX: true
   },
   {
+    id: 4,
+    title: "校内 MiniGame 创作大赛：俄罗斯方块变体",
+    category: "比赛项目 / 主程序",
+    description: "作为主程序负责 3C 设计、逻辑构建及高弹判定系统。在 7 天内完成完整游戏 Demo，获得最佳评审奖第二名。",
+    thumbnail: "https://images.unsplash.com/photo-1544333346-604274984405?q=80&w=1000&auto=format&fit=crop",
+    tags: ["主程序", "3C 设计", "碰撞判定"],
+    link: "https://www.bilibili.com/video/BV1JjXsBPErp/",
+    isVFX: false
+  },
+  {
     id: 1,
     title: "基于 UE5 的 2D 模拟 PVZ 项目",
     category: "游戏开发 / 逻辑系统",
     description: "在模拟《植物大战僵尸》的基础上，实现了地图生成、背包系统、编辑器、商店、装备、整装效果等功能。包含完整的 UI 逻辑 and 游戏流程控制，以及 BUFF 系统。",
     thumbnail: "/images/PVZ2D.webp",
     tags: ["UE5", "蓝图系统", "UI 框架", "存档系统", "BUFF 系统"],
-    link: "https://www.bilibili.com/video/BV1GSkB8Eepj/",
+    link: "https://www.bilibili.com/video/BV165XsBeEpj/",
     isVFX: false
   },
   {
@@ -79,16 +89,6 @@ export const projects: Project[] = [
     thumbnail: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=1000&auto=format&fit=crop",
     tags: ["UE C++", "动作系统", "设计模式", "Gameplay"],
     link: "https://github.com/abcde12123/Combat-System",
-    isVFX: false
-  },
-  {
-    id: 4,
-    title: "校内 MiniGame 创作大赛：俄罗斯方块变体",
-    category: "比赛项目 / 主程序",
-    description: "作为主程序负责 3C 设计、逻辑构建及高弹判定系统。在 7 天内完成完整游戏 Demo，获得最佳评审奖第二名。",
-    thumbnail: "https://images.unsplash.com/photo-1544333346-604274984405?q=80&w=1000&auto=format&fit=crop",
-    tags: ["主程序", "3C 设计", "碰撞判定"],
-    link: "https://www.bilibili.com/video/BV1JJxSBPBrp/",
     isVFX: false
   }
 ];

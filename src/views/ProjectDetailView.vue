@@ -11,6 +11,12 @@ const project = computed(() => projects.find(p => p.id === projectId.value));
 const goBack = () => {
   router.back();
 };
+
+const bilibiliBvid = computed(() => {
+  if (!project.value?.link) return null;
+  const match = project.value.link.match(/BV[a-zA-Z0-9]+/);
+  return match ? match[0] : null;
+});
 </script>
 
 <template>
@@ -55,13 +61,31 @@ const goBack = () => {
                 <div class="mb-12">
                   <h2 class="text-3xl font-black text-white mb-8 flex items-center gap-4">
                     <span class="w-1.5 h-8 bg-blue-500 rounded-full"></span>
+                    项目展示 / Showcase
+                  </h2>
+
+                  <!-- 视频内嵌区域 -->
+                  <div v-if="bilibiliBvid" class="mb-12">
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                      <iframe 
+                        :src="`//player.bilibili.com/player.html?bvid=${bilibiliBvid}&page=1&high_quality=1&danmaku=0`" 
+                        scrolling="no" 
+                        border="0" 
+                        frameborder="no" 
+                        framespacing="0" 
+                        allowfullscreen="true"
+                        class="absolute inset-0 w-full h-full"
+                      ></iframe>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-4 text-center italic">若无法播放，请点击右侧按钮跳转至 Bilibili 观看</p>
+                  </div>
+
+                  <h2 class="text-3xl font-black text-white mb-8 flex items-center gap-4">
+                    <span class="w-1.5 h-8 bg-blue-500 rounded-full"></span>
                     项目详情 / Project Breakdown
                   </h2>
                   <!-- 这里是将来放正文内容的地方 -->
                   <div class="space-y-6 text-slate-300 text-lg leading-relaxed">
-                    <p>
-                      这里是项目的核心展示区域。根据你的需求，我们移除了顶部巨大的封面图，让访问者能够第一时间接触到项目的技术细节和创作逻辑。
-                    </p>
                     <div class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
