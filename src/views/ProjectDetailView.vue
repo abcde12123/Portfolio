@@ -462,11 +462,34 @@ const bilibiliBvid = computed(() => {
                     <!-- UE 火焰技能特效 (id: 5) 特有内容 -->
                     <template v-if="project.id === 5">
                       <div class="space-y-8 my-12 text-slate-300">
-                        <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
-                          <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                            <source src="/videos/LMDGmaterial.mp4" type="video/mp4">
-                            您的浏览器不支持 video 标签。
-                          </video>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div class="space-y-3">
+                            <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                              <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="/videos/LMDGmaterial.mp4" type="video/mp4">
+                                您的浏览器不支持 video 标签。
+                              </video>
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">刀光残影细节展示</p>
+                          </div>
+                          <div class="space-y-3">
+                            <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                              <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="/videos/swordDG2.mp4" type="video/mp4">
+                                您的浏览器不支持 video 标签。
+                              </video>
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">剑气细节展示</p>
+                          </div>
+                          <div class="space-y-3">
+                            <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                              <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="/videos/trail2.mp4" type="video/mp4">
+                                您的浏览器不支持 video 标签。
+                              </video>
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">拖尾轨迹与残影表现</p>
+                          </div>
                         </div>
                         <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
                           <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
