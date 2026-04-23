@@ -192,7 +192,19 @@ const bilibiliBvid = computed(() => {
                           <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_Material.webp')">
                             <img src="/images/LM_Material.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
-                          <p class="text-base text-slate-400 text-center italic font-medium">Substance Painter 材质制作</p>
+                          <p class="text-base text-slate-400 text-center italic font-medium">SP材质制作</p>
+                        </div>
+                        <div class="space-y-4 max-w-80 mx-auto">
+                          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_Mask.webp')">
+                            <img src="/images/LM_Mask.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                          </div>
+                          <p class="text-base text-slate-400 text-center italic font-medium">分通道Mask遮罩</p>
+                        </div>
+                        <div class="space-y-4 max-w-80 mx-auto">
+                          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_Mask2.webp')">
+                            <img src="/images/LM_Mask2.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                          </div>
+                          <p class="text-base text-slate-400 text-center italic font-medium">分通道Mask遮罩</p>
                         </div>
                       </div>
                     </template>
