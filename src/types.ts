@@ -52,6 +52,16 @@ export const projects: Project[] = [
     isVFX: true
   },
   {
+    id: 9,
+    title: "UE 溶解材质函数",
+    category: "UE 材质 / Shader",
+    description: "用于角色/物体的通用溶解材质函数，可控颜色与边缘宽度，支持在不同材质实例中快速复用。",
+    thumbnail: "/images/Dissolve.webp",
+    tags: ["UE5", "材质函数", "溶解", "Shader"],
+    link: "/videos/dissolve.mp4",
+    isVFX: true
+  },
+  {
     id: 3,
     title: "UE 虚拟场景制作 (环境特效)",
     category: "环境特效 / 渲染",

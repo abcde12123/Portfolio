@@ -163,6 +163,16 @@ const bilibiliBvid = computed(() => {
                     </div>
                   </div>
 
+                  <!-- 项目 id 9 特有的视频演示 -->
+                  <div v-if="project.id === 9" class="mb-12">
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                      <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                        <source :src="project.link" type="video/mp4">
+                        您的浏览器不支持 video 标签。
+                      </video>
+                    </div>
+                  </div>
+
                   <h2 class="text-3xl font-black text-white mb-8 flex items-center gap-4">
                     <span class="w-1.5 h-8 bg-blue-500 rounded-full"></span>
                     项目详情 / Project Breakdown
@@ -183,6 +193,26 @@ const bilibiliBvid = computed(() => {
                             <img src="/images/LM_Material.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
                           <p class="text-base text-slate-400 text-center italic font-medium">Substance Painter 材质制作</p>
+                        </div>
+                      </div>
+                    </template>
+
+                    <!-- UE 溶解材质函数 (id: 9) 特有内容 -->
+                    <template v-if="project.id === 9">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="grid grid-cols-1 gap-6 mb-16">
+                          <div class="space-y-4 max-w-80 mx-auto">
+                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/MF.webp')">
+                              <img src="/images/MF.webp" alt="Dissolve Material Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">封装成材质函数快速复用</p>
+                          </div>
+                          <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/Dissolve2.webp')">
+                              <img src="/images/Dissolve2.webp" alt="Dissolve Material Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                            <p class="text-sm text-slate-400 text-center italic">参数集控制变量</p>
+                          </div>
                         </div>
                       </div>
                     </template>
@@ -561,7 +591,7 @@ const bilibiliBvid = computed(() => {
                         </div>
                       </div>
                     </template>
-                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8, 9].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
