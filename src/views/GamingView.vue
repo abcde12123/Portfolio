@@ -11,7 +11,7 @@ const gamingExperience = [
 </script>
 
 <template>
-  <div class="min-h-screen pt-32 pb-24 relative overflow-hidden bg-slate-950">
+  <div class="min-h-screen pt-15 pb-20 relative overflow-hidden bg-slate-950">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.05),transparent)] pointer-events-none"></div>
     
     <div class="container mx-auto px-6 relative z-10">

@@ -1,46 +1,151 @@
 <script setup lang="ts">
+type ToolKey =
+  | 'UE'
+  | 'Niagara'
+  | 'Unity'
+  | 'C++'
+  | 'AE'
+  | 'PR'
+  | 'DV'
+  | 'LR'
+  | 'PS'
+  | 'PT'
+  | 'AN'
+  | 'WD'
+  | 'XL'
+  | 'PPT'
+
+type SkillItem = {
+  name: string
+  tool: ToolKey
+}
+
+const toolMeta: Record<
+  ToolKey,
+  {
+    icon: string
+    tileClass: string
+    iconClass: string
+  }
+> = {
+  UE: {
+    icon: 'UE',
+    tileClass: 'bg-slate-800/40 text-white border-slate-700/60',
+    iconClass: 'bg-slate-950/40 border-slate-700/60 text-white',
+  },
+  Niagara: {
+    icon: 'NG',
+    tileClass: 'bg-blue-900/30 text-blue-200 border-blue-500/30',
+    iconClass: 'bg-blue-950/30 border-blue-500/30 text-blue-200',
+  },
+  Unity: {
+    icon: 'U',
+    tileClass: 'bg-slate-800/35 text-slate-100 border-slate-600/50',
+    iconClass: 'bg-slate-950/40 border-slate-600/50 text-slate-100',
+  },
+  'C++': {
+    icon: 'C++',
+    tileClass: 'bg-blue-900/25 text-blue-200 border-blue-500/25',
+    iconClass: 'bg-blue-950/30 border-blue-500/25 text-blue-200',
+  },
+  AE: {
+    icon: 'AE',
+    tileClass: 'bg-purple-900/25 text-purple-200 border-purple-500/25',
+    iconClass: 'bg-purple-950/30 border-purple-500/25 text-purple-200',
+  },
+  PR: {
+    icon: 'PR',
+    tileClass: 'bg-violet-900/25 text-violet-200 border-violet-500/25',
+    iconClass: 'bg-violet-950/30 border-violet-500/25 text-violet-200',
+  },
+  DV: {
+    icon: 'DV',
+    tileClass: 'bg-sky-900/25 text-sky-200 border-sky-500/25',
+    iconClass: 'bg-sky-950/30 border-sky-500/25 text-sky-200',
+  },
+  LR: {
+    icon: 'LR',
+    tileClass: 'bg-indigo-900/25 text-indigo-200 border-indigo-500/25',
+    iconClass: 'bg-indigo-950/30 border-indigo-500/25 text-indigo-200',
+  },
+  PS: {
+    icon: 'PS',
+    tileClass: 'bg-blue-900/25 text-blue-200 border-blue-500/25',
+    iconClass: 'bg-blue-950/30 border-blue-500/25 text-blue-200',
+  },
+  PT: {
+    icon: 'PT',
+    tileClass: 'bg-red-900/20 text-red-200 border-red-500/25',
+    iconClass: 'bg-red-950/30 border-red-500/25 text-red-200',
+  },
+  AN: {
+    icon: 'AN',
+    tileClass: 'bg-rose-900/20 text-rose-200 border-rose-500/25',
+    iconClass: 'bg-rose-950/30 border-rose-500/25 text-rose-200',
+  },
+  WD: {
+    icon: 'W',
+    tileClass: 'bg-blue-900/20 text-blue-200 border-blue-500/20',
+    iconClass: 'bg-blue-950/30 border-blue-500/20 text-blue-200',
+  },
+  XL: {
+    icon: 'XL',
+    tileClass: 'bg-emerald-900/20 text-emerald-200 border-emerald-500/20',
+    iconClass: 'bg-emerald-950/30 border-emerald-500/20 text-emerald-200',
+  },
+  PPT: {
+    icon: 'PPT',
+    tileClass: 'bg-orange-900/20 text-orange-200 border-orange-500/20',
+    iconClass: 'bg-orange-950/30 border-orange-500/20 text-orange-200',
+  },
+}
+
 const skillGroups = [
   {
     title: "引擎与核心开发",
     skills: [
-      { name: "Unreal Engine (Niagara/C++/蓝图)", level: "95%" },
-      { name: "Unity 引擎开发", level: "85%" },
-      { name: "C++ 编程与 Gameplay 逻辑", level: "90%" },
-      { name: "VFX 材质系统与渲染管线", level: "92%" }
+      { name: "Unreal Engine 5", tool: "UE" },
+      { name: "Niagara 特效系统", tool: "Niagara" },
+      { name: "材质系统 / Shader", tool: "UE" },
+      { name: "蓝图逻辑", tool: "UE" },
+      { name: "C++ / Gameplay 逻辑", tool: "C++" },
+      { name: "Unity 基础开发", tool: "Unity" }
     ]
   },
   {
     title: "后期与影视制作",
     skills: [
-      { name: "After Effects (平面设计与特效制作)", level: "90%" },
-      { name: "Premiere Pro & 剪映 (影视剪辑)", level: "95%" },
-      { name: "DaVinci Resolve (专业调色)", level: "88%" },
-      { name: "LightRoom (摄影后期)", level: "85%" }
+      { name: "After Effects 平面与特效", tool: "AE" },
+      { name: "Premiere / 剪映 剪辑", tool: "PR" },
+      { name: "DaVinci Resolve 调色", tool: "DV" },
+      { name: "LightRoom 摄影后期", tool: "LR" }
     ]
   },
   {
     title: "美术与设计工具",
     skills: [
-      { name: "Photoshop (图像处理)", level: "90%" },
-      { name: "Substance Painter (PT/材质绘制)", level: "85%" },
-      { name: "Animate (AN/动画制作)", level: "80%" }
+      { name: "Photoshop 图像处理", tool: "PS" },
+      { name: "Substance Painter 材质绘制", tool: "PT" },
+      { name: "Animate 动画制作", tool: "AN" }
     ]
   },
   {
     title: "办公与效率工具",
     skills: [
-      { name: "Office 全家桶 (Word/Excel/PPT)", level: "95%" }
+      { name: "Word 文档协作", tool: "WD" },
+      { name: "Excel 数据整理", tool: "XL" },
+      { name: "PPT 汇报表达", tool: "PPT" }
     ]
   }
-];
+] satisfies Array<{ title: string; skills: SkillItem[] }>;
 </script>
 
 <template>
-  <div class="min-h-screen pt-32 pb-24 relative overflow-hidden bg-slate-950">
+  <div class="min-h-screen pt-15 pb-20 relative overflow-hidden bg-slate-950">
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10"></div>
     
     <div class="container mx-auto px-6 relative z-10">
-      <div class="mb-20">
+      <div class="mb-12">
         <div class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4">
           Capabilities // Tech Stack
         </div>
@@ -60,14 +165,21 @@ const skillGroups = [
             <div class="flex-grow h-px bg-gradient-to-r from-blue-500/50 to-transparent"></div>
           </div>
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div v-for="skill in group.skills" :key="skill.name" class="group/item">
-              <div class="flex justify-between mb-3">
-                <span class="text-slate-300 font-bold tracking-wide text-sm group-hover/item:text-white transition-colors">{{ skill.name }}</span>
-                <span class="text-blue-400 font-mono text-xs font-black">{{ skill.level }}</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div
+              v-for="skill in group.skills"
+              :key="skill.name"
+              class="flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-sm transition-colors hover:border-white/30"
+              :class="toolMeta[skill.tool].tileClass"
+            >
+              <div
+                class="w-9 h-9 rounded-lg border flex items-center justify-center font-black text-[11px] tracking-tight shrink-0"
+                :class="toolMeta[skill.tool].iconClass"
+              >
+                {{ toolMeta[skill.tool].icon }}
               </div>
-              <div class="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-white/5 p-[1px]">
-                <div class="h-full bg-gradient-to-r from-blue-600 to-indigo-400 rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(37,99,235,0.5)]" :style="{ width: skill.level }"></div>
+              <div class="text-sm font-bold text-slate-100 leading-snug">
+                {{ skill.name }}
               </div>
             </div>
           </div>

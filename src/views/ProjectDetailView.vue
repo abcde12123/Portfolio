@@ -35,7 +35,7 @@ const bilibiliBvid = computed(() => {
 </script>
 
 <template>
-  <div v-if="project" class="min-h-screen bg-slate-950 pt-20 pb-24 relative overflow-hidden">
+  <div v-if="project" class="min-h-screen bg-slate-950 pt-15 pb-24 relative overflow-hidden">
     <!-- 背景装饰 -->
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
       <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full"></div>
@@ -462,6 +462,12 @@ const bilibiliBvid = computed(() => {
                     <!-- UE 火焰技能特效 (id: 5) 特有内容 -->
                     <template v-if="project.id === 5">
                       <div class="space-y-8 my-12 text-slate-300">
+                        <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                          <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                            <source src="/videos/LMDGmaterial.mp4" type="video/mp4">
+                            您的浏览器不支持 video 标签。
+                          </video>
+                        </div>
                         <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
                           <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <span class="w-1 h-6 bg-blue-500 rounded-full"></span>

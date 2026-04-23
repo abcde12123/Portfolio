@@ -8,7 +8,7 @@ const otherProjects = projects.filter(p => !p.isVFX);
 </script>
 
 <template>
-  <div class="min-h-screen pt-20 pb-24 relative overflow-hidden bg-slate-950">
+  <div class="min-h-screen pt-15 pb-24 relative overflow-hidden bg-slate-950">
     <!-- 背景装饰 -->
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
       <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full"></div>
@@ -25,7 +25,7 @@ const otherProjects = projects.filter(p => !p.isVFX);
           PORTFOLIO <span class="text-blue-500">DATABASE</span>
         </h1>
         <p class="text-slate-400 max-w-2xl text-lg leading-relaxed font-medium">
-          这里收录了我在实时特效 (VFX)、程序逻辑 (Gameplay) 以及虚拟环境制作中的所有技术沉淀。
+          这里收录了我在特效和程序逻辑制作中的所有技术沉淀。
         </p>
       </div>
 
