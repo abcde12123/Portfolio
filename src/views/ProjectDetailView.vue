@@ -173,6 +173,16 @@ const bilibiliBvid = computed(() => {
                     </div>
                   </div>
 
+                  <!-- 项目 id 10 特有的视频演示 -->
+                  <div v-if="project.id === 10" class="mb-12">
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                      <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                        <source :src="project.link" type="video/mp4">
+                        您的浏览器不支持 video 标签。
+                      </video>
+                    </div>
+                  </div>
+
                   <h2 class="text-3xl font-black text-white mb-8 flex items-center gap-4">
                     <span class="w-1.5 h-8 bg-blue-500 rounded-full"></span>
                     项目详情 / Project Breakdown
@@ -578,6 +588,36 @@ const bilibiliBvid = computed(() => {
                       </div>
                     </template>
 
+                    <!-- UE 武器特效（能量爆发）(id: 10) 特有内容 -->
+                    <template v-if="project.id === 10">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            核心表现与实现
+                          </h3>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">能量聚集与蓄力</strong>
+                              <p class="text-sm leading-relaxed">通过材质参数驱动亮度与噪声扰动，配合粒子密度提升，表现由弱到强的能量收束。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">挥砍拖尾</strong>
+                              <p class="text-sm leading-relaxed">利用轨迹/带状粒子与速度衰减曲线控制拖尾长度与残影层次，保证节奏清晰。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">命中瞬间爆发</strong>
+                              <p class="text-sm leading-relaxed">以冲击波、火花与短促闪光叠加，强调命中点的能量释放与体积感。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">统一参数接口</strong>
+                              <p class="text-sm leading-relaxed">将颜色、强度与边缘宽度等关键控制抽成参数，便于不同武器快速换皮复用。</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </template>
+
                     <!-- UE 祭坛展示场景 (id: 8) 特有内容 -->
                     <template v-if="project.id === 8">
                       <div class="space-y-8 my-12 text-slate-300">
@@ -603,7 +643,7 @@ const bilibiliBvid = computed(() => {
                         </div>
                       </div>
                     </template>
-                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8, 9].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
