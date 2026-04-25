@@ -35,9 +35,9 @@ export const projects: Project[] = [
     id: 10,
     title: "UE 武器特效（能量爆发）",
     category: "UE VFX / Niagara",
-    description: "武器攻击过程中的能量聚集与爆发特效演示，包含蓄力高亮、挥砍拖尾与命中瞬间的冲击波细节。",
+    description: "武器的能量特效演示",
     thumbnail: "/images/Power.webp",
-    tags: ["Niagara", "UE5", "武器特效", "能量", "拖尾"],
+    tags: ["Niagara", "UE5", "武器特效", "能量"],
     link: "/videos/Power.mp4",
     isVFX: true
   },

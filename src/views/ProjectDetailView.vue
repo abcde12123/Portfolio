@@ -598,20 +598,20 @@ const bilibiliBvid = computed(() => {
                           </h3>
                           <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <li class="space-y-2">
-                              <strong class="text-blue-400 block">能量聚集与蓄力</strong>
-                              <p class="text-sm leading-relaxed">通过材质参数驱动亮度与噪声扰动，配合粒子密度提升，表现由弱到强的能量收束。</p>
+                              <strong class="text-blue-400 block">施工中。。。</strong>
+                              <p class="text-sm leading-relaxed"></p>
                             </li>
                             <li class="space-y-2">
-                              <strong class="text-blue-400 block">挥砍拖尾</strong>
-                              <p class="text-sm leading-relaxed">利用轨迹/带状粒子与速度衰减曲线控制拖尾长度与残影层次，保证节奏清晰。</p>
+                              <strong class="text-blue-400 block"></strong>
+                              <p class="text-sm leading-relaxed"></p>
                             </li>
                             <li class="space-y-2">
-                              <strong class="text-blue-400 block">命中瞬间爆发</strong>
-                              <p class="text-sm leading-relaxed">以冲击波、火花与短促闪光叠加，强调命中点的能量释放与体积感。</p>
+                              <strong class="text-blue-400 block"></strong>
+                              <p class="text-sm leading-relaxed"></p>
                             </li>
                             <li class="space-y-2">
-                              <strong class="text-blue-400 block">统一参数接口</strong>
-                              <p class="text-sm leading-relaxed">将颜色、强度与边缘宽度等关键控制抽成参数，便于不同武器快速换皮复用。</p>
+                              <strong class="text-blue-400 block"></strong>
+                              <p class="text-sm leading-relaxed"></p>
                             </li>
                           </ul>
                         </div>
