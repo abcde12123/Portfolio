@@ -32,6 +32,16 @@ export const projects: Project[] = [
     isVFX: true
   },
   {
+    id: 11,
+    title: "UE 国风水墨特效",
+    category: "UE VFX / Niagara",
+    description: "国风水墨特效",
+    thumbnail: "/images/Power.webp",
+    tags: ["Niagara", "UE5", "国风", "水墨", "法阵"],
+    link: "/videos/inkball1.7.mp4",
+    isVFX: true
+  },
+  {
     id: 10,
     title: "UE 武器特效（能量爆发）",
     category: "UE VFX / Niagara",

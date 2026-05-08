@@ -173,6 +173,16 @@ const bilibiliBvid = computed(() => {
                     </div>
                   </div>
 
+                  <!-- 项目 id 11 特有的视频演示 -->
+                  <div v-if="project.id === 11" class="mb-12">
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                      <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                        <source :src="project.link" type="video/mp4">
+                        您的浏览器不支持 video 标签。
+                      </video>
+                    </div>
+                  </div>
+
                   <!-- 项目 id 10 特有的视频演示 -->
                   <div v-if="project.id === 10" class="mb-12">
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
@@ -588,6 +598,36 @@ const bilibiliBvid = computed(() => {
                       </div>
                     </template>
 
+                    <!-- UE 墨球特效（Inkball）(id: 11) 特有内容 -->
+                    <template v-if="project.id === 11">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            核心表现与实现
+                          </h3>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block"></strong>
+                              <p class="text-sm leading-relaxed"></p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block"></strong>
+                              <p class="text-sm leading-relaxed"></p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block"></strong>
+                              <p class="text-sm leading-relaxed"></p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block"></strong>
+                              <p class="text-sm leading-relaxed"></p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </template>
+
                     <!-- UE 武器特效（能量爆发）(id: 10) 特有内容 -->
                     <template v-if="project.id === 10">
                       <div class="space-y-8 my-12 text-slate-300">
@@ -643,7 +683,7 @@ const bilibiliBvid = computed(() => {
                         </div>
                       </div>
                     </template>
-                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
