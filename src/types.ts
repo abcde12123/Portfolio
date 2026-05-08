@@ -36,7 +36,7 @@ export const projects: Project[] = [
     title: "UE 国风水墨特效",
     category: "UE VFX / Niagara",
     description: "国风水墨特效",
-    thumbnail: "/images/Power.webp",
+    thumbnail: "/images/inkball.webp",
     tags: ["Niagara", "UE5", "国风", "水墨", "法阵"],
     link: "/videos/inkball1.7.mp4",
     isVFX: true
