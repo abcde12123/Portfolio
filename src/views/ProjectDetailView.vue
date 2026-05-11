@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 import { projects, publicUrl } from '../types';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 
 // v1.0.1 - Video source updated and HMR reset
 const route = useRoute();
@@ -12,6 +12,16 @@ const project = computed(() => projects.find(p => p.id === projectId.value));
 const selectedImage = ref<string | null>(null);
 const showControls = ref(false);
 const isCoarsePointer = ref(false);
+const videoError = ref(false);
+const mediaProbe = ref<{
+  url: string;
+  ok: boolean;
+  status: number | null;
+  contentType: string | null;
+  acceptRanges: string | null;
+  contentLength: string | null;
+  error: string | null;
+} | null>(null);
 
 onMounted(() => {
   isCoarsePointer.value = window.matchMedia?.('(pointer: coarse)').matches ?? false;
@@ -37,6 +47,49 @@ const showcaseVideoType = computed(() => {
   if (!showcaseVideoSrc.value) return undefined;
   return getVideoMimeType(showcaseVideoSrc.value);
 });
+
+const shouldProbeMedia = computed(() => {
+  const q = route.query?.debug;
+  return isCoarsePointer.value || q === '1';
+});
+
+const probeVideo = async (url: string) => {
+  videoError.value = false;
+  mediaProbe.value = null;
+
+  try {
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: { Range: 'bytes=0-1' },
+      cache: 'no-store',
+    });
+
+    mediaProbe.value = {
+      url: res.url || url,
+      ok: res.ok,
+      status: res.status ?? null,
+      contentType: res.headers.get('content-type'),
+      acceptRanges: res.headers.get('accept-ranges'),
+      contentLength: res.headers.get('content-length'),
+      error: null,
+    };
+  } catch (e) {
+    mediaProbe.value = {
+      url,
+      ok: false,
+      status: null,
+      contentType: null,
+      acceptRanges: null,
+      contentLength: null,
+      error: e instanceof Error ? e.message : String(e),
+    };
+  }
+};
+
+watch([showcaseVideoSrc, shouldProbeMedia], ([src, shouldProbe]) => {
+  if (!src || !shouldProbe) return;
+  void probeVideo(src);
+}, { immediate: true });
 
 const shouldShowHoverControls = computed(() => {
   const p = project.value;
@@ -138,10 +191,24 @@ const bilibiliBvid = computed(() => {
                         :controls="videoControls"
                         class="w-full h-full object-cover"
                         :poster="publicUrl(project.thumbnail)"
+                        @error="videoError = true"
+                        @stalled="videoError = true"
                       >
                         <source :src="showcaseVideoSrc" :type="showcaseVideoType">
                         您的浏览器不支持 video 标签。
                       </video>
+                    </div>
+                    <div v-if="videoError || (mediaProbe && !mediaProbe.ok)" class="mt-4 p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                      <p class="text-xs text-slate-400 text-center">
+                        视频可能被服务器/CDN 限制（常见：Range 不支持、鉴权/防盗链、响应头异常）。可尝试在新标签页打开或直接下载。
+                      </p>
+                      <div class="mt-3 flex items-center justify-center gap-3">
+                        <a :href="showcaseVideoSrc" target="_blank" class="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all">打开视频</a>
+                        <a :href="showcaseVideoSrc" download class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-black transition-all">下载视频</a>
+                      </div>
+                      <p v-if="mediaProbe && shouldProbeMedia" class="mt-3 text-[11px] text-slate-500 text-center break-all">
+                        {{ mediaProbe.status ?? 'ERR' }} · {{ mediaProbe.contentType ?? 'no content-type' }} · {{ mediaProbe.acceptRanges ?? 'no accept-ranges' }} · {{ mediaProbe.contentLength ?? 'no length' }}
+                      </p>
                     </div>
                   </div>
 
