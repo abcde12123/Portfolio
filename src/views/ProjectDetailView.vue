@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 import { projects } from '../types';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 // v1.0.1 - Video source updated and HMR reset
 const route = useRoute();
@@ -11,6 +11,44 @@ const project = computed(() => projects.find(p => p.id === projectId.value));
 
 const selectedImage = ref<string | null>(null);
 const showControls = ref(false);
+const isCoarsePointer = ref(false);
+
+onMounted(() => {
+  isCoarsePointer.value = window.matchMedia?.('(pointer: coarse)').matches ?? false;
+});
+
+const getVideoMimeType = (src: string) => {
+  const normalized = src.split('?')[0].split('#')[0].toLowerCase();
+  if (normalized.endsWith('.mp4')) return 'video/mp4';
+  if (normalized.endsWith('.webm')) return 'video/webm';
+  return undefined;
+};
+
+const showcaseVideoSrc = computed(() => {
+  const p = project.value;
+  if (!p) return null;
+  if (p.id === 8) return '/videos/LM_Rending.mp4';
+  if (typeof p.link !== 'string') return null;
+  if (!p.link.startsWith('/videos/')) return null;
+  return p.link;
+});
+
+const showcaseVideoType = computed(() => {
+  if (!showcaseVideoSrc.value) return undefined;
+  return getVideoMimeType(showcaseVideoSrc.value);
+});
+
+const shouldShowHoverControls = computed(() => {
+  const p = project.value;
+  if (!p) return false;
+  return [5, 6, 8].includes(p.id);
+});
+
+const videoControls = computed(() => {
+  if (isCoarsePointer.value) return true;
+  if (!shouldShowHoverControls.value) return false;
+  return showControls.value;
+});
 
 const openImage = (src: string) => {
   selectedImage.value = src;
@@ -85,7 +123,29 @@ const bilibiliBvid = computed(() => {
                   </h2>
 
                   <!-- 视频内嵌区域 -->
-                  <div v-if="bilibiliBvid && ![5, 6, 8].includes(project.id)" class="mb-12">
+                  <div v-if="showcaseVideoSrc" class="mb-12">
+                    <div
+                      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black"
+                      @mouseenter="shouldShowHoverControls && (showControls = true)"
+                      @mouseleave="shouldShowHoverControls && (showControls = false)"
+                    >
+                      <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="metadata"
+                        :controls="videoControls"
+                        class="w-full h-full object-cover"
+                        :poster="project.thumbnail"
+                      >
+                        <source :src="showcaseVideoSrc" :type="showcaseVideoType">
+                        您的浏览器不支持 video 标签。
+                      </video>
+                    </div>
+                  </div>
+
+                  <div v-else-if="bilibiliBvid" class="mb-12">
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                       <iframe 
                         :src="`//player.bilibili.com/player.html?bvid=${bilibiliBvid}&page=1&high_quality=1&danmaku=0&autoplay=0&muted=1`" 
@@ -98,99 +158,6 @@ const bilibiliBvid = computed(() => {
                       ></iframe>
                     </div>
                     <p class="text-slate-500 text-xs mt-4 text-center italic">若无法播放，请点击右侧按钮跳转至 Bilibili 观看</p>
-                  </div>
-
-                  <!-- 项目 id 5 特有的高性能视频内嵌 -->
-                  <div v-if="project.id === 5" class="mb-12">
-                    <div 
-                      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group"
-                      @mouseenter="showControls = true"
-                      @mouseleave="showControls = false"
-                    >
-                      <video 
-                        autoplay 
-                        loop 
-                        muted 
-                        :controls="showControls"
-                        class="w-full h-full object-cover"
-                        poster="/images/Fire_vfx.webp"
-                      >
-                        <source :src="project.link" type="video/webm">
-                        您的浏览器不支持 video 标签。
-                      </video>
-                    </div>
-                  </div>
-
-                  <!-- 项目 id 6 特有的高性能视频内嵌 -->
-                  <div v-if="project.id === 6" class="mb-12">
-                    <div 
-                      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group"
-                      @mouseenter="showControls = true"
-                      @mouseleave="showControls = false"
-                    >
-                      <video 
-                        autoplay 
-                        loop 
-                        muted 
-                        :controls="showControls"
-                        class="w-full h-full object-cover"
-                        poster="/images/IceSkill.webp"
-                      >
-                        <source :src="project.link" type="video/mp4">
-                        您的浏览器不支持 video 标签。
-                      </video>
-                    </div>
-                  </div>
-
-                  <!-- 项目 id 8 特有的高性能视频内嵌 -->
-                  <div v-if="project.id === 8" class="mb-12">
-                    <div 
-                      class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group"
-                      @mouseenter="showControls = true"
-                      @mouseleave="showControls = false"
-                    >
-                      <video 
-                        autoplay 
-                        loop 
-                        muted 
-                        :controls="showControls"
-                        class="w-full h-full object-cover"
-                        poster="/images/LM_CJ.webp"
-                      >
-                        <source src="/videos/LM_Rending.webm" type="video/webm">
-                        您的浏览器不支持 video 标签。
-                      </video>
-                    </div>
-                  </div>
-
-                  <!-- 项目 id 9 特有的视频演示 -->
-                  <div v-if="project.id === 9" class="mb-12">
-                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
-                      <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                        <source :src="project.link" type="video/mp4">
-                        您的浏览器不支持 video 标签。
-                      </video>
-                    </div>
-                  </div>
-
-                  <!-- 项目 id 11 特有的视频演示 -->
-                  <div v-if="project.id === 11" class="mb-12">
-                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
-                      <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                        <source :src="project.link" type="video/mp4">
-                        您的浏览器不支持 video 标签。
-                      </video>
-                    </div>
-                  </div>
-
-                  <!-- 项目 id 10 特有的视频演示 -->
-                  <div v-if="project.id === 10" class="mb-12">
-                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
-                      <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                        <source :src="project.link" type="video/mp4">
-                        您的浏览器不支持 video 标签。
-                      </video>
-                    </div>
                   </div>
 
                   <h2 class="text-3xl font-black text-white mb-8 flex items-center gap-4">
