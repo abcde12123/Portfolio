@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
-import { projects } from '../types';
+import { projects, publicUrl } from '../types';
 import { computed, onMounted, ref } from 'vue';
 
 // v1.0.1 - Video source updated and HMR reset
@@ -27,10 +27,10 @@ const getVideoMimeType = (src: string) => {
 const showcaseVideoSrc = computed(() => {
   const p = project.value;
   if (!p) return null;
-  if (p.id === 8) return '/videos/LM_Rending.mp4';
+  if (p.id === 8) return publicUrl('/videos/LM_Rending.mp4');
   if (typeof p.link !== 'string') return null;
   if (!p.link.startsWith('/videos/')) return null;
-  return p.link;
+  return publicUrl(p.link);
 });
 
 const showcaseVideoType = computed(() => {
@@ -51,7 +51,7 @@ const videoControls = computed(() => {
 });
 
 const openImage = (src: string) => {
-  selectedImage.value = src;
+  selectedImage.value = publicUrl(src);
   document.body.style.overflow = 'hidden';
 };
 
@@ -137,7 +137,7 @@ const bilibiliBvid = computed(() => {
                         preload="metadata"
                         :controls="videoControls"
                         class="w-full h-full object-cover"
-                        :poster="project.thumbnail"
+                        :poster="publicUrl(project.thumbnail)"
                       >
                         <source :src="showcaseVideoSrc" :type="showcaseVideoType">
                         您的浏览器不支持 video 标签。
@@ -171,25 +171,25 @@ const bilibiliBvid = computed(() => {
                       <div class="space-y-12 my-12">
                         <div class="space-y-4">
                           <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_MAYA.webp')">
-                            <img src="/images/LM_MAYA.webp" alt="Maya Modeling" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                            <img :src="publicUrl('/images/LM_MAYA.webp')" alt="Maya Modeling" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
                           <p class="text-base text-slate-400 text-center italic font-medium">Maya 高低模建模阶段</p>
                         </div>
                         <div class="space-y-4">
                           <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_Material.webp')">
-                            <img src="/images/LM_Material.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                            <img :src="publicUrl('/images/LM_Material.webp')" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
                           <p class="text-base text-slate-400 text-center italic font-medium">SP材质制作</p>
                         </div>
                         <div class="space-y-4 max-w-80 mx-auto">
                           <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_Mask.webp')">
-                            <img src="/images/LM_Mask.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                            <img :src="publicUrl('/images/LM_Mask.webp')" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
                           <p class="text-base text-slate-400 text-center italic font-medium">分通道Mask遮罩</p>
                         </div>
                         <div class="space-y-4 max-w-80 mx-auto">
                           <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/LM_Mask2.webp')">
-                            <img src="/images/LM_Mask2.webp" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                            <img :src="publicUrl('/images/LM_Mask2.webp')" alt="Substance Painter Texturing" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                           </div>
                           <p class="text-base text-slate-400 text-center italic font-medium">分通道Mask遮罩</p>
                         </div>
@@ -202,13 +202,13 @@ const bilibiliBvid = computed(() => {
                         <div class="grid grid-cols-1 gap-6 mb-16">
                           <div class="space-y-4 max-w-80 mx-auto">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/MF.webp')">
-                              <img src="/images/MF.webp" alt="Dissolve Material Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/MF.webp')" alt="Dissolve Material Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">封装成材质函数快速复用</p>
                           </div>
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/Dissolve2.webp')">
-                              <img src="/images/Dissolve2.webp" alt="Dissolve Material Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Dissolve2.webp')" alt="Dissolve Material Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">参数集控制变量</p>
                           </div>
@@ -223,25 +223,25 @@ const bilibiliBvid = computed(() => {
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R1.webp')">
-                              <img src="/images/R1.webp" alt="Virtual Scene Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/R1.webp')" alt="Virtual Scene Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">水体模拟</p>
                           </div>
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R2.webp')">
-                              <img src="/images/R2.webp" alt="Virtual Scene Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/R2.webp')" alt="Virtual Scene Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">PCG 植被生成</p>
                           </div>
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R3.webp')">
-                              <img src="/images/R3.webp" alt="Virtual Scene Preview 3" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/R3.webp')" alt="Virtual Scene Preview 3" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">材质修改与复用</p>
                           </div>
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/R4.webp')">
-                              <img src="/images/R4.webp" alt="Virtual Scene Preview 4" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/R4.webp')" alt="Virtual Scene Preview 4" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">PCG 植被生成与修改</p>
                           </div>
@@ -256,31 +256,31 @@ const bilibiliBvid = computed(() => {
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/Neowise.webp')">
-                              <img src="/images/Neowise.webp" alt="Neowise Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Neowise.webp')" alt="Neowise Preview 1" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">游戏主界面</p>
                           </div>
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/Neowise2.webp')">
-                              <img src="/images/Neowise2.webp" alt="Neowise Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Neowise2.webp')" alt="Neowise Preview 2" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">核心战斗场景</p>
                           </div>
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/Neowise3.webp')">
-                              <img src="/images/Neowise3.webp" alt="Neowise Preview 3" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Neowise3.webp')" alt="Neowise Preview 3" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">非对称合作机制展示</p>
                           </div>
                           <div class="space-y-4">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/Neowise4.webp')">
-                              <img src="/images/Neowise4.webp" alt="Neowise Preview 4" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Neowise4.webp')" alt="Neowise Preview 4" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">BOSS 战与弹幕躲避</p>
                           </div>
                           <div class="space-y-4 md:col-span-2 md:w-1/2 md:mx-auto">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group cursor-pointer" @click="openImage('/images/Neowise5.webp')">
-                              <img src="/images/Neowise5.webp" alt="Neowise Preview 5" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Neowise5.webp')" alt="Neowise Preview 5" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-sm text-slate-400 text-center italic">游戏成功结算界面</p>
                           </div>
@@ -366,31 +366,31 @@ const bilibiliBvid = computed(() => {
                         <div class="space-y-12 mb-16">
                           <div class="space-y-6">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/Combat1.webp')">
-                              <img src="/images/Combat1.webp" alt="Combat System Preview 1" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Combat1.webp')" alt="Combat System Preview 1" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-base text-slate-400 text-center italic font-medium">视角锁定功能</p>
                           </div>
                           <div class="space-y-6">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/Combat2.webp')">
-                              <img src="/images/Combat2.webp" alt="Combat System Preview 2" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Combat2.webp')" alt="Combat System Preview 2" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-base text-slate-400 text-center italic font-medium">目标锁定与战斗 UI</p>
                           </div>
                           <div class="space-y-6">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/Combat3.webp')">
-                              <img src="/images/Combat3.webp" alt="Combat System Preview 3" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Combat3.webp')" alt="Combat System Preview 3" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-base text-slate-400 text-center italic font-medium">基于球体拓展的碰撞检测调试</p>
                           </div>
                           <div class="space-y-6">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/Combat4.webp')">
-                              <img src="/images/Combat4.webp" alt="Combat System Preview 4" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Combat4.webp')" alt="Combat System Preview 4" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-base text-slate-400 text-center italic font-medium">翻滚闪避动作衔接</p>
                           </div>
                           <div class="space-y-6">
                             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 cursor-pointer" @click="openImage('/images/Combat5.webp')">
-                              <img src="/images/Combat5.webp" alt="Combat System Preview 5" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+                              <img :src="publicUrl('/images/Combat5.webp')" alt="Combat System Preview 5" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
                             </div>
                             <p class="text-base text-slate-400 text-center italic font-medium">设置菜单与参数交互</p>
                           </div>
@@ -495,7 +495,7 @@ const bilibiliBvid = computed(() => {
                           <div class="space-y-3">
                             <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                               <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                                <source src="/videos/LMDGmaterial.mp4" type="video/mp4">
+                                <source :src="publicUrl('/videos/LMDGmaterial.mp4')" type="video/mp4">
                                 您的浏览器不支持 video 标签。
                               </video>
                             </div>
@@ -504,7 +504,7 @@ const bilibiliBvid = computed(() => {
                           <div class="space-y-3">
                             <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                               <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                                <source src="/videos/swordDG2.mp4" type="video/mp4">
+                                <source :src="publicUrl('/videos/swordDG2.mp4')" type="video/mp4">
                                 您的浏览器不支持 video 标签。
                               </video>
                             </div>
@@ -513,7 +513,7 @@ const bilibiliBvid = computed(() => {
                           <div class="space-y-3">
                             <div class="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                               <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                                <source src="/videos/trail2.mp4" type="video/mp4">
+                                <source :src="publicUrl('/videos/trail2.mp4')" type="video/mp4">
                                 您的浏览器不支持 video 标签。
                               </video>
                             </div>
@@ -664,7 +664,7 @@ const bilibiliBvid = computed(() => {
             <!-- 缩小的封面图 -->
             <div class="sticky top-32 space-y-8">
               <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
-                <img :src="project.thumbnail" :alt="project.title" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img :src="publicUrl(project.thumbnail)" :alt="project.title" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
 
               <!-- 项目规格 -->

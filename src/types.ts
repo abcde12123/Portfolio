@@ -10,6 +10,43 @@ export interface Project {
   technicalData?: string;
 }
 
+let cachedPublicBase: string | null = null;
+
+export const getPublicBase = () => {
+  if (cachedPublicBase) return cachedPublicBase;
+  if (typeof window === 'undefined') {
+    cachedPublicBase = '/';
+    return cachedPublicBase;
+  }
+
+  const scripts = Array.from(document.getElementsByTagName('script'));
+  const moduleScript = scripts.find(s => s.type === 'module' && typeof s.src === 'string' && s.src.length > 0);
+  const anyScript = scripts.find(s => typeof s.src === 'string' && s.src.length > 0);
+  const src = (moduleScript?.src ?? anyScript?.src) || '';
+
+  try {
+    const url = new URL(src, window.location.href);
+    const pathname = url.pathname || '/';
+    const idx = pathname.lastIndexOf('/assets/');
+    if (idx >= 0) {
+      cachedPublicBase = pathname.slice(0, idx + 1);
+      return cachedPublicBase;
+    }
+  } catch {
+  }
+
+  cachedPublicBase = '/';
+  return cachedPublicBase;
+};
+
+export const publicUrl = (path: string) => {
+  if (!path) return path;
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('//')) return path;
+  const base = getPublicBase();
+  if (path.startsWith('/')) return base.replace(/\/$/, '') + path;
+  return base + path;
+};
+
 export const projects: Project[] = [
   {
     id: 5,

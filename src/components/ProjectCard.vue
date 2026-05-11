@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import type { Project } from '../types';
+import { publicUrl, type Project } from '../types';
 
 const props = defineProps<{
   project: Project;
@@ -21,7 +21,7 @@ const goToDetail = () => {
     <!-- 缩略图区域 -->
     <div class="relative aspect-video overflow-hidden">
       <img 
-        :src="project.thumbnail" 
+        :src="publicUrl(project.thumbnail)" 
         :alt="project.title"
         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
