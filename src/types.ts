@@ -63,9 +63,9 @@ export const projects: Project[] = [
     title: "UE 冰技能特效",
     category: "UE VFX / Niagara",
     description: "利用 Niagara 系统构建的冰霜材质与粒子交互特效。实现了基于深度的冻结效果与冰晶折射材质。",
-    thumbnail: "/images/IceSkill.webp",
+    thumbnail: "/images/Ice1.0.webp",
     tags: ["Niagara", "UE5", "Ice Shader"],
-    link: "/videos/IceSkill0.9.mp4",
+    link: "/videos/Ice1.0.mp4",
     isVFX: true
   },
   {
