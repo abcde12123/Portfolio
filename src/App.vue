@@ -47,6 +47,7 @@ watch(() => route?.path, () => {
           <router-link to="/portfolio" class="nav-link">全部作品</router-link>
           <router-link to="/skills" class="nav-link">技能</router-link>
           <router-link to="/gaming" class="nav-link">游戏经历</router-link>
+          <router-link to="/resume" class="nav-link">简历</router-link>
           <a href="#contact" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-600/20 ml-4">
             联系我
           </a>
