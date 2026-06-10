@@ -49,13 +49,13 @@ export const publicUrl = (path: string) => {
 
 export const projects: Project[] = [
   {
-    id: 5,
-    title: "UE 火焰技能特效",
+    id: 11,
+    title: "UE 国风水墨特效",
     category: "UE VFX / Niagara",
-    description: "基于 UE 的火焰技能效果制作。包含火焰刀光，能量聚集蓄力，剑气发射3个核心部分，以及地裂，石头飞溅，火光四射等辅助部分。",
-    thumbnail: "/images/Fire_vfx.webp",
-    tags: ["Niagara", "UE5", "材质系统", "火焰特效"],
-    link: "/videos/FireSkill1.0.mp4",
+    description: "国风水墨特效",
+    thumbnail: "/images/inkball.webp",
+    tags: ["Niagara", "UE5", "国风", "水墨", "法阵"],
+    link: "/videos/inkball1.7.mp4",
     isVFX: true
   },
   {
@@ -69,13 +69,13 @@ export const projects: Project[] = [
     isVFX: true
   },
   {
-    id: 11,
-    title: "UE 国风水墨特效",
+    id: 5,
+    title: "UE 火焰技能特效",
     category: "UE VFX / Niagara",
-    description: "国风水墨特效",
-    thumbnail: "/images/inkball.webp",
-    tags: ["Niagara", "UE5", "国风", "水墨", "法阵"],
-    link: "/videos/inkball1.7.mp4",
+    description: "基于 UE 的火焰技能效果制作。包含火焰刀光，能量聚集蓄力，剑气发射3个核心部分，以及地裂，石头飞溅，火光四射等辅助部分。",
+    thumbnail: "/images/Fire_vfx.webp",
+    tags: ["Niagara", "UE5", "材质系统", "火焰特效"],
+    link: "/videos/FireSkill1.0.mp4",
     isVFX: true
   },
   {
