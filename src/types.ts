@@ -79,6 +79,26 @@ export const projects: Project[] = [
     isVFX: true
   },
   {
+    id: 12,
+    title: "Unity 闪电技能特效",
+    category: "Unity VFX / Shader",
+    description: "基于 Unity 制作的闪电技能演示，强调电弧跳跃、瞬时爆发与地面受击反馈。",
+    thumbnail: "/images/unity_Lightning.webp",
+    tags: ["Unity", "Shader", "闪电", "技能特效"],
+    link: "/videos/unity_Lightning.mp4",
+    isVFX: true
+  },
+  {
+    id: 13,
+    title: "Unity 长枪技能特效",
+    category: "Unity VFX / Timeline",
+    description: "围绕长枪攻击节奏制作的特效演示，包含突刺轨迹、能量汇聚与命中爆发。",
+    thumbnail: "/images/unity_Spear.webp",
+    tags: ["Unity", "Timeline", "长枪", "武器特效"],
+    link: "/videos/Unity_Spear.mp4",
+    isVFX: true
+  },
+  {
     id: 10,
     title: "UE 武器特效（能量爆发）",
     category: "UE VFX / Niagara",

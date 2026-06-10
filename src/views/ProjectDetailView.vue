@@ -675,6 +675,66 @@ const bilibiliBvid = computed(() => {
                       </div>
                     </template>
 
+                    <!-- Unity 闪电技能特效 (id: 12) 特有内容 -->
+                    <template v-if="project.id === 12">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            核心表现与实现
+                          </h3>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">电弧分叉表现</strong>
+                              <p class="text-sm leading-relaxed">通过多段闪电纹理与噪声位移模拟电流跳跃，强化瞬时爆发的攻击感。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">受击点闪爆</strong>
+                              <p class="text-sm leading-relaxed">在命中点叠加高亮闪光与短促粒子喷发，让闪电落点更明确更有力度。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">颜色节奏控制</strong>
+                              <p class="text-sm leading-relaxed">以蓝白主色做亮度渐变，兼顾高能感与清晰轮廓，避免画面发灰。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">技能前后摇衔接</strong>
+                              <p class="text-sm leading-relaxed">通过蓄力到释放的层次变化，让整段技能节奏更完整，读感更顺畅。</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </template>
+
+                    <!-- Unity 长枪技能特效 (id: 13) 特有内容 -->
+                    <template v-if="project.id === 13">
+                      <div class="space-y-8 my-12 text-slate-300">
+                        <div class="bg-blue-600/5 border border-blue-500/10 rounded-2xl p-8 md:p-10">
+                          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+                            核心表现与实现
+                          </h3>
+                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">突刺轨迹</strong>
+                              <p class="text-sm leading-relaxed">围绕长枪的攻击路径构建拖尾与能量切线，突出武器前冲的速度感。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">聚能前摇</strong>
+                              <p class="text-sm leading-relaxed">在出招前加入局部汇能与亮度抬升，帮助玩家提前识别技能将要释放。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">命中爆发</strong>
+                              <p class="text-sm leading-relaxed">利用中心闪爆与外扩碎片强化命中反馈，让技能更有穿透与击穿感。</p>
+                            </li>
+                            <li class="space-y-2">
+                              <strong class="text-blue-400 block">整体节奏统一</strong>
+                              <p class="text-sm leading-relaxed">把武器动作、拖尾长度与爆发时机做统一控制，确保整段表现干净利落。</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </template>
+
                     <!-- UE 武器特效（能量爆发）(id: 10) 特有内容 -->
                     <template v-if="project.id === 10">
                       <div class="space-y-8 my-12 text-slate-300">
@@ -730,7 +790,7 @@ const bilibiliBvid = computed(() => {
                         </div>
                       </div>
                     </template>
-                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
+                    <div v-if="![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(project.id)" class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-center my-12">
                       <p class="text-slate-400 italic">“ 正在准备详细的文章内容与技术复盘，请稍候... ”</p>
                     </div>
                   </div>
